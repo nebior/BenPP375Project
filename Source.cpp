@@ -105,7 +105,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 		if (input.size()>13)  //If not last line of file, continue.
 		{
 			comp = input.substr(0, 50); shipped = input.substr(50, 10); sentnum = input.substr(60, 1);
-			cout << "Shipment from: " << comp << endl << "Sent on: " << shipped << endl << "Number of items: " << sentnum << endl;
+			cout <<endl<< "Shipment from: " << comp << endl << "Sent on: " << shipped << endl << "Number of items: " << sentnum << endl;
 			int i = atoi(sentnum.c_str());  //Gets number of items from vendor in int form.
 			cout<<endl<<"INVOICE"<<endl;
 			for (int j = i; j>0; j--)
@@ -699,20 +699,41 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 }
 int main()
 {
-	File.open("catalogue.txt"), Vendor.open("vendor.txt"), Customer.open("Customer.txt");  //Opening the files.
+	string cataFile;
+	cout<<"Enter name of Catalogue File "<<endl;
+	cin>>cataFile;
+	File.open(cataFile);
 	warehouse num[3];  //Three warehouse locations
 	char userInput; 
 	string temp;
+	string vendFile, custFile;
 	head = new list;
+	int dayCount = 1;
 	setuplist(head);
 	cout<<"Catalogue Created"<<endl;
+		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
+		cin>>vendFile;
+		Vendor.open(vendFile);
+		vendor(num);
+		cout<<"Enter name of Customer File For Day "<< dayCount<<". "<<endl;
+		cin>>custFile;
+		Customer.open(custFile);
+		customer(num);
 	do {
 		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4. Abort without saving "<<endl;
 	cin>>userInput;
 	
 	if(userInput == '1')
 	{
-cout<<"INSERT NEXT DAY HERE!!!!"<<endl;
+		dayCount++;
+		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
+		cin>>vendFile;
+		Vendor.open(vendFile);
+		vendor(num);
+		cout<<"Enter name of Customer File For Day "<< dayCount<<". "<<endl;
+		cin>>custFile;
+		Customer.open(custFile);
+		customer(num);
 	}
 	else if(userInput== '2')
 	{
