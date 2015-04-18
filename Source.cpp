@@ -700,6 +700,7 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 int main()
 {
 	string cataFile;
+	string lookupId;
 	cout<<"Enter name of Catalogue File "<<endl;
 	cin>>cataFile;
 	File.open(cataFile);
@@ -720,6 +721,7 @@ int main()
 		Customer.open(custFile);
 		customer(num);
 	do {
+		cout<<endl<<"Please select and action below "<<endl;
 		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4. Abort without saving "<<endl;
 	cin>>userInput;
 	
@@ -737,7 +739,8 @@ int main()
 	}
 	else if(userInput== '2')
 	{
-		cout<<"INSERT LOOKUP HERE!!!"<<endl;
+		cout<<"Please enter the ID of the item you want information about "<<endl;
+		cin>>lookupId;
 	}
 	else if(userInput== '3')
 	{
