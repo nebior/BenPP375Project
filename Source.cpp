@@ -430,14 +430,14 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 		{
 			lineitems = input.substr(3, 1); numven = input.substr(1, 1);
 			cout << "Total number of vendors: " << numven << endl << "Total number of line items: " << lineitems << endl<< endl;
-			system("pause");
+	//		system("pause");
 			for(int n = 0; n<3; n++){//Outputs the contents of all 3 warehouses, screen too small to get first 3 small slots.
 		cout<<"Warehouse "<<n+1<<endl;
 				for(int i = 0; i<20; i++){
 					cout<<"Small "<<i<<" ID: "<<num[n].sloc[i].small[0]<<" Count: "<<num[n].sloc[i].small[1]<<endl;
 
 				}
-				system("pause");
+		//		system("pause");
 				for(int i = 0; i<60; i++){
 					cout<<"Medium "<<i<<" ID: "<<num[n].medloc[i].medium[0]<<" Count: "<<num[n].medloc[i].medium[1]<<endl;
 
@@ -447,7 +447,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 
 				}
 				if(n == 2){
-					system("pause");
+					//system("pause");
 				}
 			}
 		}
@@ -517,9 +517,9 @@ void customer(warehouse num[3])
 					{
 int smallGivenToCustomer = 0;
 //The below chunk checks to see if the item exists in the warehouse
-						int s = 0;
+						int s = 19;
 
-						while(s<20 && doneFillingOrder == false)//Look at all 20 small spots in the warehouse
+						while(s>=0 && doneFillingOrder == false)//Look at all 20 small spots in the warehouse
 						{
 							smallGivenToCustomer = 0;//reset to 0
 							bool itemStillInWarehouse = false;//reset to false
@@ -563,20 +563,20 @@ int smallGivenToCustomer = 0;
 								
 							}
 							}
-							if(s == 19){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
+							if(s == 0 && smallGivenToCustomer == 0){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
 								cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
 								doneFillingOrder = true;
 							}
-							s++;
+							s--;
 						}
 					}
 					else if (itemsize == "M") //If item size is medium.
 					{
 												int mediumGivenToCustomer = 0;
 //The below chunk checks to see if the item exists in the warehouse
-						int m = 0;
+						int m = 19;
 
-						while(m<20 && doneFillingOrder == false)//Look at all 20 medium spots in the warehouse
+						while(m>=0 && doneFillingOrder == false)//Look at all 20 medium spots in the warehouse
 						{
 							mediumGivenToCustomer = 0;//reset to 0
 							bool itemStillInWarehouse = false;//reset to false
@@ -620,21 +620,20 @@ int smallGivenToCustomer = 0;
 								
 							}
 							}
-							if(m == 19){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
-								cout<<"None of item "<<item<<" is in warehouse " << n +1<<endl;;
+							if(m == 0 && mediumGivenToCustomer == 0){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
+								cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
 								doneFillingOrder = true;
-								
 							}
-							m++;
+							m--;
 						}
 					}
 					else if (itemsize == "L") //If item size is large.
 					{
 						int largeGivenToCustomer = 0;
 //The below chunk checks to see if the item exists in the warehouse
-						int l = 0;
+						int l = 19;
 
-						while(l<20 && doneFillingOrder == false)//Look at all 20 large spots in the warehouse
+						while(l>=0 && doneFillingOrder == false)//Look at all 20 large spots in the warehouse
 						{
 							largeGivenToCustomer = 0;//reset to 0
 							bool itemStillInWarehouse = false;//reset to false
@@ -678,12 +677,11 @@ int smallGivenToCustomer = 0;
 								
 							}
 							}
-							if(l == 19){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
-								cout<<"None of item "<<item<<" is in warehouse " << n +1<<endl;
+							if(l == 0 && largeGivenToCustomer == 0){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
+								cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
 								doneFillingOrder = true;
-								
 							}
-							l++;
+							l--;
 						}
 					}//end Large
 }	
