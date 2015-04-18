@@ -232,8 +232,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 								warehousesChecked[0]= false;
 								warehousesChecked[1]= false;
 								warehousesChecked[2]= false;
-							}
-							
+							}						
 						}						
 							}
 							s++;;
@@ -326,8 +325,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 								warehousesChecked[0]= false;
 								warehousesChecked[1]= false;
 								warehousesChecked[2]= false;
-							}
-							
+							}						
 						}						
 							}
 							m++;
@@ -360,8 +358,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 							cout<<"Stored "<<tempFromForm<<" of the large item with ID: "<<num[n].lloc[l].large[0]<<" in location "<<l<<" of warehouse "<<n+1<<endl;					
 							}
 							if(numberAlreadyInWarehouse == 10 && numberFromForm>0)//If we filled the slot and there are still items remaining to be added
-							{
-								
+							{							
 								num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].large[1]
 							cout<<"Stored "<<num[n].lloc[l].large[1]<<" of the large item with ID: "<<num[n].lloc[l].large[0]<<" in location "<<l<<" of warehouse "<<n+1<<endl;
 							if(l == 19){cout<<"There was not enough room in warehouse "<< n+1 << " to store the " <<numberFromForm<< " items with ID " <<item<<endl;}
@@ -416,8 +413,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 								warehousesChecked[0]= false;
 								warehousesChecked[1]= false;
 								warehousesChecked[2]= false;
-							}
-							
+							}					
 						}						
 							}
 							l++;
@@ -430,21 +426,18 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 		{
 			lineitems = input.substr(3, 1); numven = input.substr(1, 1);
 			cout << "Total number of vendors: " << numven << endl << "Total number of line items: " << lineitems << endl<< endl;
-	//		system("pause");
+	system("pause");
 			for(int n = 0; n<3; n++){//Outputs the contents of all 3 warehouses, screen too small to get first 3 small slots.
 		cout<<"Warehouse "<<n+1<<endl;
 				for(int i = 0; i<20; i++){
 					cout<<"Small "<<i<<" ID: "<<num[n].sloc[i].small[0]<<" Count: "<<num[n].sloc[i].small[1]<<endl;
-
 				}
 		//		system("pause");
 				for(int i = 0; i<60; i++){
 					cout<<"Medium "<<i<<" ID: "<<num[n].medloc[i].medium[0]<<" Count: "<<num[n].medloc[i].medium[1]<<endl;
-
 				}
 				for(int i = 0; i<20; i++){
 					cout<<"Large "<<i<<" ID: "<<num[n].lloc[i].large[0]<<" Count: "<<num[n].lloc[i].large[1]<<endl;
-
 				}
 				if(n == 2){
 					//system("pause");
@@ -469,15 +462,12 @@ void customer(warehouse num[3])
 		{
 			//All of Customer's Info
 			type = input.substr(0, 1); last = input.substr(1, 30); first = input.substr(31, 30);straddr = input.substr(61, 30);comma = input.substr(91, 1);city = input.substr(92, 20);
-			state = input.substr(112, 20);post = input.substr(132, 10);country = input.substr(142, 40);orderdate = input.substr(182, 8);ordercount = input.substr(190, 1);
-			
-			
+			state = input.substr(112, 20);post = input.substr(132, 10);country = input.substr(142, 40);orderdate = input.substr(182, 8);ordercount = input.substr(190, 1);			
 	getline(Customer, input);
 			custid = input.substr(0, 10);
 			orderid = input.substr(10, 10);
 			payment = input.substr(20, 10);
-			discount = input.substr(30, 2);
-		
+			discount = input.substr(30, 2);		
 		int i = atoi(ordercount.c_str());  //Gets number of items from Customer in int form.
 			for (int j = i; j>0; j--)
 			{
@@ -489,8 +479,7 @@ void customer(warehouse num[3])
 				else if (input.size() == 16){ count = input.substr(13, 3); }
 				else if (input.size() == 17){ count = input.substr(13, 4); }
 				int n = (atoi(number.c_str()) - 1);
-				int numberStillNeeded = (atoi(count.c_str()));
-			
+				int numberStillNeeded = (atoi(count.c_str()));			
 		if (check(item, head, total) != true)
 				{
 					cout << "Item " << item << " is not in the catalogue, will not store item." << endl;
@@ -518,7 +507,6 @@ void customer(warehouse num[3])
 int smallGivenToCustomer = 0;
 //The below chunk checks to see if the item exists in the warehouse
 						int s = 19;
-
 						while(s>=0 && doneFillingOrder == false)//Look at all 20 small spots in the warehouse
 						{
 							smallGivenToCustomer = 0;//reset to 0
@@ -575,7 +563,6 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 												int mediumGivenToCustomer = 0;
 //The below chunk checks to see if the item exists in the warehouse
 						int m = 19;
-
 						while(m>=0 && doneFillingOrder == false)//Look at all 20 medium spots in the warehouse
 						{
 							mediumGivenToCustomer = 0;//reset to 0
@@ -632,7 +619,6 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 						int largeGivenToCustomer = 0;
 //The below chunk checks to see if the item exists in the warehouse
 						int l = 19;
-
 						while(l>=0 && doneFillingOrder == false)//Look at all 20 large spots in the warehouse
 						{
 							largeGivenToCustomer = 0;//reset to 0
@@ -695,19 +681,17 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 		cout<<"Warehouse "<<n+1<<endl;
 				for(int i = 0; i<20; i++){
 					cout<<"Small "<<i<<" ID: "<<num[n].sloc[i].small[0]<<" Count: "<<num[n].sloc[i].small[1]<<endl;
-
 				}
-				system("pause");
+				//system("pause");
 				for(int i = 0; i<60; i++){
 					cout<<"Medium "<<i<<" ID: "<<num[n].medloc[i].medium[0]<<" Count: "<<num[n].medloc[i].medium[1]<<endl;
 
 				}
 				for(int i = 0; i<20; i++){
 					cout<<"Large "<<i<<" ID: "<<num[n].lloc[i].large[0]<<" Count: "<<num[n].lloc[i].large[1]<<endl;
-
 				}
 				if(n == 2){
-					system("pause");
+					//system("pause");
 				}
 			}
 		}
@@ -723,30 +707,22 @@ int main()
 	setuplist(head);
 	cout<<"Catalogue Created"<<endl;
 	do {
-		cout<<"What would you like to do?"<<endl<<"1. Intake initial stock."<<endl<<"2. Take vendor items in."<<endl;
-		cout<<"3. Receive customer order and ship."<<endl<<"4. Next Day."<<endl<<"5. Save and quit."<<endl<<"6. Abort without Saving. "<<endl;
+		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4. Abort without saving "<<endl;
 	cin>>userInput;
-	if(userInput == '1')
-	{
 	
-	}
-	else if(userInput == '2')
-	{
-	vendor(num);
-	}
-	else if(userInput == '3')
-	{
-    customer(num);
-	}
-	else if(userInput == '4')
+	if(userInput == '1')
 	{
 cout<<"INSERT NEXT DAY HERE!!!!"<<endl;
 	}
-	else if(userInput== '5')
+	else if(userInput== '2')
+	{
+		cout<<"INSERT LOOKUP HERE!!!"<<endl;
+	}
+	else if(userInput== '3')
 	{
 		cout<<"INSERT SAVE AND QUIT HERE!!!"<<endl;
 	}
-	else if(userInput== '6')
+	else if(userInput== '4')
 	{
 		abort();
 	}
