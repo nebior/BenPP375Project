@@ -2,8 +2,8 @@
 //  main.cpp
 //  375 - Big project
 //
-//  Created by Christopher Murdoch on 4/8/15.
-//  Copyright (c) 2015 Christopher Murdoch. All rights reserved.
+//  Created by Programing Programing Prodigies on 4/8/15.
+//  Copyright (c) 2015 Programing Prodigies. All rights reserved.
 //
 #include <iostream>
 #include <string>
@@ -721,24 +721,23 @@ int main()
 	char userInput; 
 	string temp;
 	head = new list;
-	setuplist(head);
-	vendor(num);
-	customer(num);
-	/*
+	//setuplist(head);
+	//vendor(num);
+	//customer(num);
+	
 	cout<<"Catalogue Created"<<endl;
 	
+	do {
 	cout<<"What would you like to do?"<<endl<<"1. Intake initial stock."<<endl<<"2. Take vendor items in."<<endl;
-	cout<<"3. Receive customer order and ship."<<endl<<"4. Next Day."<<endl<<"5. Save and quit."<<"6. Abort without Saving. "<<endl;
+	cout<<"3. Receive customer order and ship."<<endl<<"4. Next Day."<<endl<<"5. Save and quit."<<endl<<"6. Abort without Saving. "<<endl;
 	cin>>userInput;
-	
-	while(userInput != '6'){
 	if(userInput == '1')
 	{
-		cout<<"Hello";
+	setuplist(head);
+	cout<<"Initial stock has been processed."<<endl;
 	}
 	else if(userInput == '2')
-	{
-		cout << "hyello";
+	{	
 	vendor(num);
 	}
 	else if(userInput == '3')
@@ -747,11 +746,11 @@ int main()
 	}
 	else if(userInput == '4')
 	{
-
+		cout<<"INSERT NEXT DAY HERE!!!!"<<endl;
 	}
 	else if(userInput== '5')
 	{
-
+		cout<<"INSERT SAVE AND QUIT HERE!!!"<<endl;
 	}
 	else if(userInput== '6')
 	{
@@ -761,8 +760,8 @@ int main()
 	{
 	cout<<"Not a valid entry. Retype choice.";
 	}
-	}
-	*/
+	} while(userInput != '6');
+	
 	system("pause");
 	return 0;
 }
