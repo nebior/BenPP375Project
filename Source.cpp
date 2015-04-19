@@ -4,7 +4,7 @@
 //
 //  Created by Programing Programing Prodigies on 4/8/15.
 //  Copyright (c) 2015 Programing Prodigies. All rights reserved.
-//  Latest Change 4/19/15 6:41 pm (Samier)
+//  Latest Change 4/19/15 7:19pm 4/19/2015
 //
 #include <iostream>
 #include <string>
@@ -651,10 +651,7 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
-<<<<<<< HEAD
 								
-=======
->>>>>>> origin/master
 								cout<<mediumQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<mediumQuantityForInvoice;
