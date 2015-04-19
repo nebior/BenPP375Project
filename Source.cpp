@@ -651,7 +651,10 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
+<<<<<<< HEAD
 								
+=======
+>>>>>>> origin/master
 								cout<<mediumQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<mediumQuantityForInvoice;
