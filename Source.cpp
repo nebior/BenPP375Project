@@ -471,7 +471,7 @@ void customer(warehouse num[3])
 		{
 			
 
-
+//Remove this comment, this is where Ben left off 4/18/2015 8:46 PM
 			
 			
 			
