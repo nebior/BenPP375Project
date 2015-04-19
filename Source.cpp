@@ -4,7 +4,7 @@
 //
 //  Created by Programing Programing Prodigies on 4/8/15.
 //  Copyright (c) 2015 Programing Prodigies. All rights reserved.
-//  Latest Change 4/18/15 9:04 pm
+//  Latest Change 4/19/15 5:44 pm (Ben)
 //
 #include <iostream>
 #include <string>
@@ -499,7 +499,7 @@ void customer(warehouse num[3])
 			cout<<"Order Date: "<< orderdate.substr(4, 2)  << "-" << orderdate.substr(6, 2) << "-" << orderdate.substr(0, 4) << endl;
 			cout<<"Shipping Date: "<<shipdate.substr(4, 2)  << "-" <<shipdate.substr(6, 2) << "-" <<shipdate.substr(0, 4) << endl;
 			cout<<"Payment Type: "<<payment<<endl<<endl;
-			cout<<"Item ID      Item Name          Quantity     Price          Item total"<<endl;
+			cout<<"Item ID      Item Name                 Quantity     Price          Item total"<<endl;
 
 		for (int j = i; j>0; j--)
 			{
@@ -538,6 +538,7 @@ void customer(warehouse num[3])
 					sizeFound = false;//reset to false
 					if (itemsize == "S")  //If item size is small.
 					{
+int smallQuantityForInvoice = 0;
 int smallGivenToCustomer = 0;
 //The below chunk checks to see if the item exists in the warehouse
 						int s = 19;
@@ -561,6 +562,15 @@ int smallGivenToCustomer = 0;
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
 								doneFillingOrder = true;//We have given the customer all we have
+								//Invoice Output Below
+								smallQuantityForInvoice+=smallGivenToCustomer;
+								cout<<smallQuantityForInvoice;
+								cout<<"          $ "<<temp->itemprice;
+								string itemPriceHolder = temp->itemprice;
+								double priceHolder = smallQuantityForInvoice * (stod(itemPriceHolder.c_str()));
+								cout<<"      $ "<<priceHolder<<endl;	
+
+
 								num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].small[1]
 								
 						//	cout<<"Gave "<<smallGivenToCustomer<<" of the small item with ID: "<<num[n].sloc[s].small[0]<<" from location "<<s<<" of warehouse "<<n+1<<endl;
@@ -572,6 +582,7 @@ int smallGivenToCustomer = 0;
 							}
 							else if(numberAlreadyInWarehouse == 0 && numberStillNeeded>0)//If we empty the slot and there are still items needed by the customer
 							{
+								smallQuantityForInvoice+=smallGivenToCustomer;
 num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].small[1]
 							//		cout<<"Gave "<<smallGivenToCustomer<<" of the small item with ID: "<<num[n].sloc[s].small[0]<<" from location "<<s<<" of warehouse "<<n+1<<endl;
 									if(num[n].sloc[s].small[1] == "0")//Delete item in that slot if we empty slot
@@ -595,6 +606,7 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 					else if (itemsize == "M") //If item size is medium.
 					{
 												int mediumGivenToCustomer = 0;
+												int mediumQuantityForInvoice = 0;
 //The below chunk checks to see if the item exists in the warehouse
 						int m = 19;
 						while(m>=0 && doneFillingOrder == false)//Look at all 20 medium spots in the warehouse
@@ -617,6 +629,13 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
 								doneFillingOrder = true;//We have given the customer all we have
+								//Invoice Output Below
+								mediumQuantityForInvoice+=mediumGivenToCustomer;
+								cout<<mediumQuantityForInvoice;
+								cout<<"          $ "<<temp->itemprice;
+								string itemPriceHolder = temp->itemprice;
+								double priceHolder = mediumQuantityForInvoice * (stod(itemPriceHolder.c_str()));
+								cout<<"      $ "<<priceHolder<<endl;
 	num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].medium[1]
 								
 							//cout<<"Gave "<<mediumGivenToCustomer<<" of the medium item with ID: "<<num[n].medloc[m].medium[0]<<" from location "<<m<<" of warehouse "<<n+1<<endl;
@@ -651,6 +670,7 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 					else if (itemsize == "L") //If item size is large.
 					{
 						int largeGivenToCustomer = 0;
+						int largeQuantityForInvoice = 0;
 //The below chunk checks to see if the item exists in the warehouse
 						int l = 19;
 						while(l>=0 && doneFillingOrder == false)//Look at all 20 large spots in the warehouse
@@ -673,6 +693,13 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
 								doneFillingOrder = true;//We have given the customer all we have
+								//Invoice Output Below
+								largeQuantityForInvoice+=largeGivenToCustomer;
+								cout<<largeQuantityForInvoice;
+								cout<<"          $ "<<temp->itemprice;
+								string itemPriceHolder = temp->itemprice;
+								double priceHolder = largeQuantityForInvoice * (stod(itemPriceHolder.c_str()));
+								cout<<"      $ "<<priceHolder<<endl;
 									num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].large[1]
 						//	cout<<"Gave "<<largeGivenToCustomer<<" of the Large item with ID: "<<num[n].lloc[l].large[0]<<" from location "<<l<<" of warehouse "<<n+1<<endl;
 						if(num[n].lloc[l].large[1] == "0")//Delete item in that slot if we empty slot
@@ -858,7 +885,7 @@ int main()
 	else if(userInput== '3')
 	{
 		saveProgress(num);
-		cout << "Items and progress has been save." << endl;
+		cout << "Items and progress has been saved." << endl;
 		system("pause");
 		return 0;
 	}
