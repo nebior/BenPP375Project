@@ -458,6 +458,7 @@ void customer(warehouse num[3])
 {
 	string input, type, last, first, business, straddr, comma, city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, fileid, shipdate, item, number, count, customers, lineitems, itemsize;
 	//what is the business variable for???????
+	ofstream Invoicef;
 	bool sizeFound = false;//reset to false
 	bool doneFillingOrder = false;
 	int custCount = 0;
@@ -490,8 +491,8 @@ void customer(warehouse num[3])
 		   
 			double overallSubtotal = 0;
 		//Invoice 
-			ofstream Invoicef;
-			Invoicef.open("Invoice.txt");
+			
+			Invoicef.open("Invoice.txt", std::ofstream::trunc | std::ofstream::app);
 			cout<<endl<<first<<" "<<last<<endl;
 			cout<<straddr<<endl;
 			cout<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){cout<<country;}
@@ -573,12 +574,12 @@ int smallGivenToCustomer = 0;
 								numberStillNeeded--;//Remove one from number needed by the customer
 								numberAlreadyInWarehouse--;//Remove one from number in warehouse
 								smallGivenToCustomer++;//Add one to the number given to the customer
+								smallQuantityForInvoice++;
 							}
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
-								smallQuantityForInvoice+=smallGivenToCustomer;
 								cout<<smallQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<smallQuantityForInvoice;
@@ -644,12 +645,13 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								numberStillNeeded--;//Remove one from number needed by the customer
 								numberAlreadyInWarehouse--;//Remove one from number in warehouse
 								mediumGivenToCustomer++;//Add one to the number given to the customer
+								mediumQuantityForInvoice++;
 							}
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
-								mediumQuantityForInvoice+=mediumGivenToCustomer;
+								
 								cout<<mediumQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<mediumQuantityForInvoice;
@@ -712,12 +714,12 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								numberStillNeeded--;//Remove one from number needed by the customer
 								numberAlreadyInWarehouse--;//Remove one from number in warehouse
 								largeGivenToCustomer++;//Add one to the number given to the customer
+								largeQuantityForInvoice++;
 							}
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
-								largeQuantityForInvoice+=largeGivenToCustomer;
 								cout<<largeQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<largeQuantityForInvoice;
@@ -786,6 +788,7 @@ if(j == 1){
 		}//if >13 close
 		else
 		{
+			//Invoicef.close();
 			/*lineitems = input.substr(3, 1); customers = input.substr(1, 1);
 			cout << "Total number of customers: " << customers << endl << "Total number of line items: " << lineitems << endl<< endl;	
 			system("pause");
@@ -904,7 +907,7 @@ int main()
 	
 	if(userInput == '1')
 	{
-		dayCount++;
+		dayCount++;	
 		while(true)
 	{
 		Vendor.close();
