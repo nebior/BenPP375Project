@@ -169,7 +169,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 							if(numberFromForm == 0)//If we added every item from the vendor form
 							{
 								doneStoring = true;//We have stored every item from the vendor form
-								num[n].sloc[s].small[1]=to_string(numberAlreadyInWarehouse);//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].small[1]
+								num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].small[1]
 							//cout<<"Stored "<<tempFromForm<<" of the small item with ID: "<<num[n].sloc[s].small[0]<<" in location "<<s<<" of warehouse "<<n+1<<endl;					
 							}
 							if(numberAlreadyInWarehouse == 250 && numberFromForm>0)//If we filled the slot and there are still items remaining to be added
@@ -471,7 +471,7 @@ void customer(warehouse num[3])
 		{
 			
 
-//Remove this comment, this is where Ben left off 4/18/2015 8:46 PM
+
 			
 			
 			
