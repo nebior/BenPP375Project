@@ -458,7 +458,7 @@ void customer(warehouse num[3])
 {
 	string input, type, last, first, business, straddr, comma, city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, fileid, shipdate, item, number, count, customers, lineitems, itemsize;
 	//what is the business variable for???????
-	ofstream Invoicef;
+	
 	bool sizeFound = false;//reset to false
 	bool doneFillingOrder = false;
 	int custCount = 0;
@@ -491,8 +491,8 @@ void customer(warehouse num[3])
 		   
 			double overallSubtotal = 0;
 		//Invoice 
-			
-			Invoicef.open("Invoice.txt", std::ofstream::trunc | std::ofstream::app);
+			ofstream Invoicef;
+			Invoicef.open("Invoice.txt",::ofstream::app);
 			cout<<endl<<first<<" "<<last<<endl;
 			cout<<straddr<<endl;
 			cout<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){cout<<country;}
@@ -505,7 +505,7 @@ void customer(warehouse num[3])
 			cout<<"Item ID      Item Name                 Quantity     Price          Item total"<<endl;
 			Invoicef<<endl<<first<<" "<<last<<endl;
 			Invoicef<<straddr<<endl;
-			Invoicef<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){cout<<country;}
+			Invoicef<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){Invoicef<<country;}
 			Invoicef<<endl;
 			Invoicef<<"Customer ID: " <<custid<<endl;
 			Invoicef<<"Order ID: " <<orderid<<endl;
@@ -908,6 +908,7 @@ int main()
 	if(userInput == '1')
 	{
 		dayCount++;	
+		remove( "Invoice.txt" );
 		while(true)
 	{
 		Vendor.close();
