@@ -573,12 +573,12 @@ int smallGivenToCustomer = 0;
 								numberStillNeeded--;//Remove one from number needed by the customer
 								numberAlreadyInWarehouse--;//Remove one from number in warehouse
 								smallGivenToCustomer++;//Add one to the number given to the customer
+								smallQuantityForInvoice++;
 							}
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
-								smallQuantityForInvoice+=smallGivenToCustomer;
 								cout<<smallQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<smallQuantityForInvoice;
@@ -644,12 +644,12 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								numberStillNeeded--;//Remove one from number needed by the customer
 								numberAlreadyInWarehouse--;//Remove one from number in warehouse
 								mediumGivenToCustomer++;//Add one to the number given to the customer
+								mediumQuantityForInvoice++;
 							}
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
-								mediumQuantityForInvoice+=mediumGivenToCustomer;
 								cout<<mediumQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<mediumQuantityForInvoice;
@@ -712,12 +712,12 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								numberStillNeeded--;//Remove one from number needed by the customer
 								numberAlreadyInWarehouse--;//Remove one from number in warehouse
 								largeGivenToCustomer++;//Add one to the number given to the customer
+								largeQuantityForInvoice++;
 							}
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
-								largeQuantityForInvoice+=largeGivenToCustomer;
 								cout<<largeQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<largeQuantityForInvoice;
