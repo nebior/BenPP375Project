@@ -91,12 +91,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 	string input, today, fileid, item, number, count, shipped, comp, sentnum, numven, lineitems, itemsize, tempFromForm;
 	bool itemAlreadyInWarehouse = false;
 	bool sizeFound = false;//A break below was messing things up, came up with a bool to track if we grabbed the size or not
-	bool warehousesChecked[3];
-	bool noRoom = false;
 	bool doneStoring = false;
-	warehousesChecked[0]= false;
-	warehousesChecked[1]= false;
-	warehousesChecked[2]= false;
 	getline(Vendor, input);  //First line with File ID and date receieved.
 	fileid = input.substr(1, 4);
 	today = input.substr(6, 8); 
@@ -207,37 +202,9 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 							num[n].sloc[r].small[0] = item;//Put item ID in first empty slot
 							break;
 						}
-						if(r==19)//checked whole warehouse, it is full
-						{
-							noRoom = true;
+						
 						}
-						}
-						if(noRoom==true)
-						{
-							noRoom = false;
-							//Check another Warehouse
-							warehousesChecked[n] = true;//set the warehouse we just checked as checked
-							if(warehousesChecked[0]== false)//if we haven't checked warehouse 1, check it
-							{
-								n = 0;
-							}
-							else if(warehousesChecked[1]==false)//if we haven't checked warehouse 2, check it
-							{
-								n = 1;
-							}
-							else if(warehousesChecked[2]==false)//if we haven't checked warehouse 3, check it
-							{
-								n = 2;
-							}
-							else
-							{
-								//Tell analyst all warehouses are full
-								//Set all warehouses to unchecked
-								warehousesChecked[0]= false;
-								warehousesChecked[1]= false;
-								warehousesChecked[2]= false;
-							}						
-						}						
+										
 							}
 							s++;
 						}									
@@ -302,37 +269,8 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 							num[n].medloc[r].medium[0] = item;//Put item ID in first empty slot
 							break;
 						}
-						if(r==19)//checked whole warehouse, it is full
-						{
-							noRoom = true;
-						}
-						}
-						if(noRoom==true)
-						{
-							noRoom = false;
-							//Check another Warehouse
-							warehousesChecked[n] = true;//set the warehouse we just checked as checked
-							if(warehousesChecked[0]== false)//if we haven't checked warehouse 1, check it
-							{
-								n = 0;
-							}
-							else if(warehousesChecked[1]==false)//if we haven't checked warehouse 2, check it
-							{
-								n = 1;
-							}
-							else if(warehousesChecked[2]==false)//if we haven't checked warehouse 3, check it
-							{
-								n = 2;
-							}
-							else
-							{
-								//Tell analyst all warehouses are full
-								//Set all warehouses to unchecked
-								warehousesChecked[0]= false;
-								warehousesChecked[1]= false;
-								warehousesChecked[2]= false;
-							}						
-						}						
+						
+						}				
 							}
 							m++;
 						}		
@@ -392,37 +330,8 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 								l--;
 								break;
 							}
-						if(r==19)//checked whole warehouse, it is full
-						{
-							noRoom = true;
-						}
-						}
-						if(noRoom==true)
-						{
-							noRoom = false;
-							//Check another Warehouse
-							warehousesChecked[n] = true;//set the warehouse we just checked as checked
-							if(warehousesChecked[0]== false)//if we haven't checked warehouse 1, check it
-							{
-								n = 0;
-							}
-							else if(warehousesChecked[1]==false)//if we haven't checked warehouse 2, check it
-							{
-								n = 1;
-							}
-							else if(warehousesChecked[2]==false)//if we haven't checked warehouse 3, check it
-							{
-								n = 2;
-							}
-							else
-							{
-								//Tell analyst all warehouses are full
-								//Set all warehouses to unchecked
-								warehousesChecked[0]= false;
-								warehousesChecked[1]= false;
-								warehousesChecked[2]= false;
-							}					
-						}						
+						
+						}											
 							}
 							l++;
 						}		
@@ -456,12 +365,14 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 }
 void customer(warehouse num[3])
 {
-	string input, type, last, first, business, straddr, comma, city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, fileid, shipdate, item, number, count, customers, lineitems, itemsize;
-	//what is the business variable for???????
-	
+	string input, type, last, first, business, straddr, comma, city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, fileid, shipdate, item, number, count, customers, lineitems, itemsize;	
 	bool sizeFound = false;//reset to false
 	bool doneFillingOrder = false;
-	int custCount = 0;
+	int custCount = 0;	
+	bool warehousesChecked[3];
+	warehousesChecked[0]= false;
+	warehousesChecked[1]= false;
+	warehousesChecked[2]= false;
 	getline(Customer, input);
 	fileid = input.substr(1, 4);
 	shipdate = input.substr(6, 8); 
@@ -471,12 +382,6 @@ void customer(warehouse num[3])
 		getline(Customer, input);//Type,Last,First
 		if (input.size()>13)  //If not last line of file, continue.
 		{
-			
-
-
-			
-			
-			
 			//All of Customer's Info
 			type = input.substr(0, 1); last = input.substr(1, 30); first = input.substr(31, 30);straddr = input.substr(61, 30);comma = input.substr(91, 1);city = input.substr(92, 20);
 			state = input.substr(112, 20);post = input.substr(132, 10);country = input.substr(142, 40);orderdate = input.substr(182, 8);ordercount = input.substr(190, 1);			
@@ -486,9 +391,7 @@ void customer(warehouse num[3])
 			payment = input.substr(20, 10);
 			discount = input.substr(30, 2);		
 		int i = atoi(ordercount.c_str());  //Gets number of items from Customer in int form.
-		custCount++;	
-
-		   
+		custCount++;	  
 			double overallSubtotal = 0;
 		//Invoice 
 			ofstream Invoicef;
@@ -512,8 +415,7 @@ void customer(warehouse num[3])
 			Invoicef<<"Order Date: "<< orderdate.substr(4, 2)  << "-" << orderdate.substr(6, 2) << "-" << orderdate.substr(0, 4) << endl;
 			Invoicef<<"Shipping Date: "<<shipdate.substr(4, 2)  << "-" <<shipdate.substr(6, 2) << "-" <<shipdate.substr(0, 4) << endl;
 			Invoicef<<"Payment Type: "<<payment<<endl<<endl;
-		    Invoicef<<"Item ID      Item Name                 Quantity     Price          Item total"<<endl;
-			
+		    Invoicef<<"Item ID      Item Name                 Quantity     Price          Item total"<<endl;		
 		for (int j = i; j>0; j--)
 			{
 				doneFillingOrder = false;
@@ -589,8 +491,6 @@ int smallGivenToCustomer = 0;
 								cout<<"      $ "<<priceHolder<<endl;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
-
-
 								num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].small[1]
 								
 						//	cout<<"Gave "<<smallGivenToCustomer<<" of the small item with ID: "<<num[n].sloc[s].small[0]<<" from location "<<s<<" of warehouse "<<n+1<<endl;
@@ -612,8 +512,7 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								}
 							}
 							else//Items in warehouse = items needed by customer
-							{
-								
+							{								
 							}
 							}
 							if(s == 0 && smallGivenToCustomer == 0){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
@@ -754,10 +653,37 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 							}
 							if(l == 0 && largeGivenToCustomer == 0){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
 							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
+								
+							//Check another Warehouse
+							warehousesChecked[n] = true;//set the warehouse we just checked as checked
+							if(warehousesChecked[0]== false)//if we haven't checked warehouse 1, check it
+							{
+								n = 0;
+								l = 19;
+							}
+							else if(warehousesChecked[1]==false)//if we haven't checked warehouse 2, check it
+							{
+								n = 1;
+								l = 19;
+							}
+							else if(warehousesChecked[2]==false)//if we haven't checked warehouse 3, check it
+							{
+								n = 2;
+								l = 19;
+							}
+							else
+							{
+								//Tell analyst all warehouses are full
+								//Set all warehouses to unchecked
+								warehousesChecked[0]= false;
+								warehousesChecked[1]= false;
+								warehousesChecked[2]= false;
+							}					
+						}
 								doneFillingOrder = true;
 							}
 							l--;
-						}
+						
 					}//end Large
 }	
 //Math For Invoice
