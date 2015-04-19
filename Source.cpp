@@ -760,6 +760,27 @@ void search(warehouse num[3], string itemID)
 
 			}
 }
+void saveProgress(warehouse num[3])
+{
+	ofstream save("Progress.sav"); //Creates the save file for what is stored in warehouse
+	for (int n = 0; n < 3; n++) //Writes what is in the warehouse.
+	{
+		save << "Warehouse " << n + 1 << endl;
+		for (int i = 0; i < 20; i++){
+			save << "Small " << i << " ID: " << num[n].sloc[i].small[0] << " Count: " << num[n].sloc[i].small[1] << endl;
+
+		}
+		for (int i = 0; i < 60; i++){
+			save << "Medium " << i << " ID: " << num[n].medloc[i].medium[0] << " Count: " << num[n].medloc[i].medium[1] << endl;
+
+		}
+		for (int i = 0; i < 20; i++){
+			save << "Large " << i << " ID: " << num[n].lloc[i].large[0] << " Count: " << num[n].lloc[i].large[1] << endl;
+
+		}
+	}
+
+}
 int main()
 {
 	string cataFile;
@@ -836,7 +857,10 @@ int main()
 	}
 	else if(userInput== '3')
 	{
-		cout<<"INSERT SAVE AND QUIT HERE!!!"<<endl;
+		saveProgress(num);
+		cout << "Items and progress has been save." << endl;
+		system("pause");
+		return 0;
 	}
 	else if(userInput== '4')
 	{
