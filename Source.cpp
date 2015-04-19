@@ -697,6 +697,37 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 		}
 	}			
 }
+
+void search(warehouse num[3], string itemID)
+{
+	bool found = false; 
+	for(int n = 0; n<3; n++){//Outputs the contents of all 3 warehouses, screen too small to get first 3 small slots.
+				for(int i = 0; i<20; i++){
+					if(num[n].sloc[i].small[0] == itemID)
+					{
+						cout << "Found at warehouse " << n + 1 << " location " << i << " in quantity " << num[n].sloc[i].small[1] << endl;
+					}
+				}
+
+				for(int i = 0; i<60; i++){
+					if(num[n].medloc[i].medium[0] == itemID)
+					{
+						cout << "Found at warehouse " << n + 1<< " location " << i << " in quantity " << num[n].medloc[i].medium[1] << endl;
+					}
+
+				}
+				for(int i = 0; i<20; i++){
+
+					if(num[n].lloc[i].large[0] == itemID)
+					{
+						cout << "Found at warehouse " << n + 1<< " location " << i << " in quantity " << num[n].lloc[i].large[1] << endl;
+					}
+					
+				}
+
+			}
+}
+
 int main()
 {
 	string cataFile;
@@ -741,6 +772,7 @@ int main()
 	{
 		cout<<"Please enter the ID of the item you want information about "<<endl;
 		cin>>lookupId;
+		search(num, lookupId);
 	}
 	else if(userInput== '3')
 	{
