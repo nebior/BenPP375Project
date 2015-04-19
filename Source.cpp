@@ -731,7 +731,6 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 		}
 	}			
 }
-
 void search(warehouse num[3], string itemID)
 {
 	bool found = false; 
@@ -761,7 +760,6 @@ void search(warehouse num[3], string itemID)
 
 			}
 }
-
 int main()
 {
 	string cataFile;
