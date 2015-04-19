@@ -1,0 +1,23 @@
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25      $ 2.5
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1479
+         							==============
+Discount Percentage --25						369.75
+Order Total 								1109.25
+         							==============
+Tax      6%								66.555
+Amount Due in Pizza Cake						1131.43

@@ -4,7 +4,7 @@
 //
 //  Created by Programing Programing Prodigies on 4/8/15.
 //  Copyright (c) 2015 Programing Prodigies. All rights reserved.
-//  Latest Change 4/19/15 5:44 pm (Ben)
+//  Latest Change 4/19/15 6:41 pm (Samier)
 //
 #include <iostream>
 #include <string>
@@ -490,7 +490,8 @@ void customer(warehouse num[3])
 		   
 			double overallSubtotal = 0;
 		//Invoice 
-			
+			ofstream Invoicef;
+			Invoicef.open("Invoice.txt");
 			cout<<endl<<first<<" "<<last<<endl;
 			cout<<straddr<<endl;
 			cout<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){cout<<country;}
@@ -501,7 +502,16 @@ void customer(warehouse num[3])
 			cout<<"Shipping Date: "<<shipdate.substr(4, 2)  << "-" <<shipdate.substr(6, 2) << "-" <<shipdate.substr(0, 4) << endl;
 			cout<<"Payment Type: "<<payment<<endl<<endl;
 			cout<<"Item ID      Item Name                 Quantity     Price          Item total"<<endl;
-
+			Invoicef<<endl<<first<<" "<<last<<endl;
+			Invoicef<<straddr<<endl;
+			Invoicef<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){cout<<country;}
+			Invoicef<<endl;
+			Invoicef<<"Customer ID: " <<custid<<endl;
+			Invoicef<<"Order ID: " <<orderid<<endl;
+			Invoicef<<"Order Date: "<< orderdate.substr(4, 2)  << "-" << orderdate.substr(6, 2) << "-" << orderdate.substr(0, 4) << endl;
+			Invoicef<<"Shipping Date: "<<shipdate.substr(4, 2)  << "-" <<shipdate.substr(6, 2) << "-" <<shipdate.substr(0, 4) << endl;
+			Invoicef<<"Payment Type: "<<payment<<endl<<endl;
+		    Invoicef<<"Item ID      Item Name                 Quantity     Price          Item total"<<endl;
 			
 		for (int j = i; j>0; j--)
 			{
@@ -517,6 +527,7 @@ void customer(warehouse num[3])
 		if (check(item, head, total) != true)
 				{
 					cout << "Item " << item << " is not in the catalogue, will not store item." << endl;
+					Invoicef << "Item " << item << " is not in the catalogue, will not store item." << endl;
 				}
 				else
 				{
@@ -530,6 +541,8 @@ void customer(warehouse num[3])
 							sizeFound=true;//We found the size
 								cout<<temp->itemid<<"  ";
 								cout<<temp->itemname;
+								Invoicef<<temp->itemid<<"  ";
+								Invoicef<<temp->itemname;
 						}
 						if(sizeFound == false)//Until we find the size keep looking
 						{
@@ -568,9 +581,12 @@ int smallGivenToCustomer = 0;
 								smallQuantityForInvoice+=smallGivenToCustomer;
 								cout<<smallQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
+								Invoicef<<smallQuantityForInvoice;
+								Invoicef<<"          $ "<<temp->itemprice;
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = smallQuantityForInvoice * (stod(itemPriceHolder.c_str()));
 								cout<<"      $ "<<priceHolder<<endl;
+								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
 
 
@@ -636,9 +652,12 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								mediumQuantityForInvoice+=mediumGivenToCustomer;
 								cout<<mediumQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
+								Invoicef<<mediumQuantityForInvoice;
+								Invoicef<<"          $ "<<temp->itemprice;
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = mediumQuantityForInvoice * (stod(itemPriceHolder.c_str()));
 								cout<<"      $ "<<priceHolder<<endl;
+								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
 	num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].medium[1]
 								
@@ -701,9 +720,12 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								largeQuantityForInvoice+=largeGivenToCustomer;
 								cout<<largeQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
+								Invoicef<<largeQuantityForInvoice;
+								Invoicef<<"          $ "<<temp->itemprice;
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = largeQuantityForInvoice * (stod(itemPriceHolder.c_str()));
 								cout<<"      $ "<<priceHolder<<endl;
+								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
 									num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].large[1]
 						//	cout<<"Gave "<<largeGivenToCustomer<<" of the Large item with ID: "<<num[n].lloc[l].large[0]<<" from location "<<l<<" of warehouse "<<n+1<<endl;
@@ -739,14 +761,20 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 //Math For Invoice
 if(j == 1){
 			cout<<endl<<"Subtotal "<<"\t\t\t\t\t\t\t\t"<<overallSubtotal<<endl;	
+			Invoicef<<endl<<"Subtotal "<<"\t\t\t\t\t\t\t\t"<<overallSubtotal<<endl;	
 			cout<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
+			Invoicef<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
+			Invoicef<<"Discount Percentage --"<<discount<<"\t\t\t\t\t\t"<<overallSubtotal * ((stod(discount.c_str()))/100)<<endl;
 			cout<<"Discount Percentage --"<<discount<<"\t\t\t\t\t\t"<<overallSubtotal * ((stod(discount.c_str()))/100)<<endl;	
 			double discountedPrice = (overallSubtotal - overallSubtotal * ((stod(discount.c_str()))/100));
 			cout<<"Order Total "<<"\t\t\t\t\t\t\t\t"<<discountedPrice<<endl;	
 			cout<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
 			cout<<"Tax      6%"<<"\t\t\t\t\t\t\t\t"<<(discountedPrice * .06)<<endl;
 			cout<<"Amount Due in "<<payment<<"\t\t\t\t\t\t"<<discountedPrice   +((overallSubtotal * ((stod(discount.c_str()))/100)) * .06)<<endl;
-
+			Invoicef<<"Order Total "<<"\t\t\t\t\t\t\t\t"<<discountedPrice<<endl;	
+			Invoicef<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
+			Invoicef<<"Tax      6%"<<"\t\t\t\t\t\t\t\t"<<(discountedPrice * .06)<<endl;
+			Invoicef<<"Amount Due in "<<payment<<"\t\t\t\t\t\t"<<discountedPrice   +((overallSubtotal * ((stod(discount.c_str()))/100)) * .06)<<endl;
 		  }
 }//for loop end
 
