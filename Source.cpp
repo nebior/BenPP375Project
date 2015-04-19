@@ -487,7 +487,8 @@ void customer(warehouse num[3])
 		int i = atoi(ordercount.c_str());  //Gets number of items from Customer in int form.
 		custCount++;	
 
-
+		   
+			double overallSubtotal = 0;
 		//Invoice 
 			
 			cout<<endl<<first<<" "<<last<<endl;
@@ -501,6 +502,7 @@ void customer(warehouse num[3])
 			cout<<"Payment Type: "<<payment<<endl<<endl;
 			cout<<"Item ID      Item Name                 Quantity     Price          Item total"<<endl;
 
+			
 		for (int j = i; j>0; j--)
 			{
 				doneFillingOrder = false;
@@ -568,7 +570,8 @@ int smallGivenToCustomer = 0;
 								cout<<"          $ "<<temp->itemprice;
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = smallQuantityForInvoice * (stod(itemPriceHolder.c_str()));
-								cout<<"      $ "<<priceHolder<<endl;	
+								cout<<"      $ "<<priceHolder<<endl;
+								overallSubtotal+=priceHolder;
 
 
 								num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].small[1]
@@ -636,6 +639,7 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = mediumQuantityForInvoice * (stod(itemPriceHolder.c_str()));
 								cout<<"      $ "<<priceHolder<<endl;
+								overallSubtotal+=priceHolder;
 	num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].medium[1]
 								
 							//cout<<"Gave "<<mediumGivenToCustomer<<" of the medium item with ID: "<<num[n].medloc[m].medium[0]<<" from location "<<m<<" of warehouse "<<n+1<<endl;
@@ -700,6 +704,7 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = largeQuantityForInvoice * (stod(itemPriceHolder.c_str()));
 								cout<<"      $ "<<priceHolder<<endl;
+								overallSubtotal+=priceHolder;
 									num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].large[1]
 						//	cout<<"Gave "<<largeGivenToCustomer<<" of the Large item with ID: "<<num[n].lloc[l].large[0]<<" from location "<<l<<" of warehouse "<<n+1<<endl;
 						if(num[n].lloc[l].large[1] == "0")//Delete item in that slot if we empty slot
@@ -731,7 +736,25 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 						}
 					}//end Large
 }	
-			}//for loop end
+//Math For Invoice
+if(j == 1){
+			cout<<endl<<"Subtotal "<<"\t\t\t\t\t\t\t\t"<<overallSubtotal<<endl;	
+			cout<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
+			cout<<"Discount Percentage --"<<discount<<"\t\t\t\t\t\t"<<overallSubtotal * ((stod(discount.c_str()))/100)<<endl;	
+			double discountedPrice = (overallSubtotal - overallSubtotal * ((stod(discount.c_str()))/100));
+			cout<<"Order Total "<<"\t\t\t\t\t\t\t\t"<<discountedPrice<<endl;	
+			cout<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
+			cout<<"Tax      6%"<<"\t\t\t\t\t\t\t\t"<<(discountedPrice * .06)<<endl;
+			cout<<"Amount Due in "<<payment<<"\t\t\t\t\t\t"<<discountedPrice   +((overallSubtotal * ((stod(discount.c_str()))/100)) * .06)<<endl;
+
+		  }
+}//for loop end
+
+
+			
+
+
+
 		}//if >13 close
 		else
 		{
