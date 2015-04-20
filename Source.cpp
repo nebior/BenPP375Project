@@ -1018,12 +1018,14 @@ void search(warehouse num[3], string itemID)
 					if(num[n].sloc[i].smalle[0] == itemID)
 					{
 						cout << "Found at warehouse " << n + 1 << " location " << i << " in quantity " << num[n].sloc[i].smalle[1] << endl;
+						found = true;
 					}
 				}
 				for(int i = 0; i<60; i++){
 					if(num[n].medloc[i].medium[0] == itemID)
 					{
 						cout << "Found at warehouse " << n + 1<< " location " << i << " in quantity " << num[n].medloc[i].medium[1] << endl;
+						found = true;
 					}
 				}
 				for(int i = 0; i<20; i++){
@@ -1031,7 +1033,12 @@ void search(warehouse num[3], string itemID)
 					if(num[n].lloc[i].large[0] == itemID)
 					{
 						cout << "Found at warehouse " << n + 1<< " location " << i << " in quantity " << num[n].lloc[i].large[1] << endl;
+						found = true;
 					}					
+				}
+				if(n == 2 && found == false)
+				{
+					cout<<"Item Not found."<<endl;
 				}
 			}
 }
