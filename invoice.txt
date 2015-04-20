@@ -1,7 +1,44 @@
 
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID  Item Name          Warehouse 1 					 Location     Quantity
+3d619Sh867			Round Tire                         L-5                  14
+Item ID Item Name          Warehouse 2 			 Location     Quantity
+Item ID Item Name          Warehouse 3 					 Location     Quantity
+6811F58S01			3x5 Business Cards                 S-0                  6
+7K89f4W56g			Garbage can                        L-0                  10
+
 Bill                           Dell                          
 10002Hollywood Street         
-Friend               Kansas               0125412015
+Friend               Kansas               0125412015United Nations of Canada                
 Customer ID: 8888888888
 Order ID: 8888888888
 Order Date: 06-21-2010
@@ -10,14 +47,929 @@ Payment Type: Pizza Cake
 
 Item ID      Item Name                 Quantity     Price          Item total
 39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
-6811F58S01  3x5 Business Cards            10          $ 00000.25      $ 2.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
 8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
 1900r43s8f  Football                      50          $ 00025.00      $ 1250
 
-Subtotal 								1479
+Subtotal 								1476.5
          							==============
-Discount Percentage --25						369.75
-Order Total 								1109.25
+Discount Percentage --25						369.125
+Order Total 								1107.38
          							==============
-Tax      6%								66.555
-Amount Due in Pizza Cake						1131.43
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID  Item Name          Warehouse 1 					 Location     Quantity
+Item ID Item Name          Warehouse 2 			 Location     Quantity
+39g5d443s0			Pens                               S-0                  3
+8dhe7521nm			Logitech keyboard                  M-6                  5
+Item ID Item Name          Warehouse 3 					 Location     Quantity
+1900r43s8f			Football                           M-0                  50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID  Item Name          Warehouse 1 					 Location     Quantity
+3d619Sh867      Round Tire                         L-1                  14
+Item ID Item Name          Warehouse 2 			 Location     Quantity
+Item ID Item Name          Warehouse 3 					 Location     Quantity
+6811F58S01      3x5 Business Cards                 S-0                  6
+7K89f4W56g      Garbage can                        L-0                  10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID  Item Name          Warehouse 1 					 Location     Quantity
+Item ID Item Name          Warehouse 2 			 Location     Quantity
+39g5d443s0     Pens                               S-0                  3
+8dhe7521nm     Logitech keyboard                  M-2                  5
+Item ID Item Name          Warehouse 3 					 Location     Quantity
+1900r43s8f      Football                           M-0                  50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID       Item Name          Warehouse 1 Location     Quantity
+3d619Sh867      Round Tire                         L-1                  14
+Item ID      Item Name          Warehouse 2 Location     Quantity
+Item ID      Item Name          Warehouse 3 Location     Quantity
+6811F58S01      3x5 Business Cards                 S-0                  6
+7K89f4W56g      Garbage can                        L-0                  10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID       Item Name          Warehouse 1 Location     Quantity
+Item ID      Item Name          Warehouse 2 Location     Quantity
+39g5d443s0     Pens                               S-0                  3
+8dhe7521nm     Logitech keyboard                  M-2                  5
+Item ID      Item Name          Warehouse 3 Location     Quantity
+1900r43s8f      Football                           M-0                  50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name          Warehouse 1 Location     Quantity
+3d619Sh867    Round Tire                     L-1                  14
+Item ID     Item Name          Warehouse 2 Location     Quantity
+Item ID     Item Name          Warehouse 3 Location     Quantity
+6811F58S01    3x5 Business Cards             S-0                  6
+7K89f4W56g    Garbage can                    L-0                  10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name          Warehouse 1 Location     Quantity
+Item ID     Item Name          Warehouse 2 Location     Quantity
+39g5d443s0   Pens                           S-0                  3
+8dhe7521nm   Logitech keyboard              M-2                  5
+Item ID     Item Name          Warehouse 3 Location     Quantity
+1900r43s8f    Football                       M-0                  50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name                 Warehouse 1 Location     Quantity
+3d619Sh867    Round Tire                     L-1                  14
+Item ID     Item Name                 Warehouse 2 Location     Quantity
+Item ID     Item Name                 Warehouse 3 Location     Quantity
+6811F58S01    3x5 Business Cards             S-0                  6
+7K89f4W56g    Garbage can                    L-0                  10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name                 Warehouse 1 Location     Quantity
+Item ID     Item Name                 Warehouse 2 Location     Quantity
+39g5d443s0   Pens                           S-0                  3
+8dhe7521nm   Logitech keyboard              M-2                  5
+Item ID     Item Name                 Warehouse 3 Location     Quantity
+1900r43s8f    Football                       M-0                  50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name                 Warehouse 1 Location     Quantity
+3d619Sh867    Round Tire                     L-2                  6
+3d619Sh867    Round Tire                     L-1                  8
+Item ID     Item Name                 Warehouse 2 Location     Quantity
+Item ID     Item Name                 Warehouse 3 Location     Quantity
+6811F58S01    3x5 Business Cards             S-0                  0
+7K89f4W56g    Garbage can                    L-0                  10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name                 Warehouse 1 Location     Quantity
+Item ID     Item Name                 Warehouse 2 Location     Quantity
+39g5d443s0   Pens                           S-0                  3
+8dhe7521nm   Logitech keyboard              M-2                  5
+Item ID     Item Name                 Warehouse 3 Location     Quantity
+1900r43s8f    Football                       M-0                  50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+3d619Sh867    Round Tire                     L-3                  6
+3d619Sh867    Round Tire                     L-2                  8
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+6811F58S01    3x5 Business Cards             S-1                  0
+7K89f4W56g    Garbage can                    L-1                  10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+39g5d443s0   Pens                           S-1                  3
+8dhe7521nm   Logitech keyboard              M-3                  5
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+1900r43s8f    Football                       M-1                  50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+3d619Sh867    Round Tire                     L-3                  6
+3d619Sh867    Round Tire                     L-2                  8
+                                                                                                  Total: 14Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+6811F58S01    3x5 Business Cards             S-1                  0
+7K89f4W56g    Garbage can                    L-1                  10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+39g5d443s0   Pens                           S-1                  3
+8dhe7521nm   Logitech keyboard              M-3                  5
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+1900r43s8f    Football                       M-1                  50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+3d619Sh867    Round Tire                     L-3                  6
+3d619Sh867    Round Tire                     L-2                  8
+                                                                            Total: 14
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+6811F58S01    3x5 Business Cards             S-1                  0
+7K89f4W56g    Garbage can                    L-1                  10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+39g5d443s0   Pens                           S-1                  3
+8dhe7521nm   Logitech keyboard              M-3                  5
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+1900r43s8f    Football                       M-1                  50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+3d619Sh867    Round Tire                       L-3                            6
+3d619Sh867    Round Tire                       L-2                            8
+                                                                            Total: 14
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+6811F58S01    3x5 Business Cards               S-1                            0
+7K89f4W56g    Garbage can                      L-1                            10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+39g5d443s0   Pens                             S-1                            3
+8dhe7521nm   Logitech keyboard                M-3                            5
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+1900r43s8f    Football                         M-1                            50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+3d619Sh867    Round Tire                       L-3                            6
+3d619Sh867    Round Tire                       L-2                            8
+                                                               Total:               14
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+6811F58S01    3x5 Business Cards               S-1                            0
+7K89f4W56g    Garbage can                      L-1                            10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+39g5d443s0   Pens                             S-1                            3
+8dhe7521nm   Logitech keyboard                M-3                            5
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+1900r43s8f    Football                         M-1                            50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+3d619Sh867    Round Tire                       L-3                            6
+3d619Sh867    Round Tire                       L-2                            8
+                                                 Total:               14
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+6811F58S01    3x5 Business Cards               S-1                            0
+7K89f4W56g    Garbage can                      L-1                            10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+39g5d443s0   Pens                             S-1                            3
+8dhe7521nm   Logitech keyboard                M-3                            5
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+1900r43s8f    Football                         M-1                            50
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 3215514551
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Ice Cream 
+
+Item ID      Item Name                 Quantity     Price          Item total
+6811F58S01  3x5 Business Cards            6          $ 00000.25      $ 1.5
+6811F58S01  3x5 Business Cards            4          $ 00000.25   BACKORDERED
+3d619Sh867  Round Tire                    14          $ 00180.00      $ 2520
+7K89f4W56g  Garbage can                   10          $ 00060.00      $ 600
+
+Subtotal 								3121.5
+         							==============
+Discount Percentage --35						1092.52
+Order Total 								2028.98
+         							==============
+Tax      6%								121.739
+Amount Due in Ice Cream 						2094.53
+Customer ID: 3215514551
+
+John                           Smith                         
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 3621455551
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+3d619Sh867    Round Tire                       L-3                            6
+3d619Sh867    Round Tire                       L-2                            8
+                                               Total:                       14
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+6811F58S01    3x5 Business Cards               S-1                            0
+7K89f4W56g    Garbage can                      L-1                            10
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Customer ID: 8888888888
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Payment Type: Pizza Cake
+
+Item ID      Item Name                 Quantity     Price          Item total
+39g5d443s0  Pens                          3          $ 00000.50      $ 1.5
+6811F58S01  3x5 Business Cards            10          $ 00000.25   BACKORDERED
+8dhe7521nm  Logitech keyboard             5          $ 00045.00      $ 225
+1900r43s8f  Football                      50          $ 00025.00      $ 1250
+
+Subtotal 								1476.5
+         							==============
+Discount Percentage --25						369.125
+Order Total 								1107.38
+         							==============
+Tax      6%								66.4425
+Amount Due in Pizza Cake						1129.52
+Customer ID: 8888888888
+
+Bill                           Dell                          
+10002Hollywood Street         
+Friend               Kansas               0125412015United Nations of Canada                
+Order ID: 8888888888
+Order Date: 06-21-2010
+Shipping Date: 05-12-2015
+Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity
+Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity
+39g5d443s0   Pens                             S-1                            3
+8dhe7521nm   Logitech keyboard                M-3                            5
+Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity
+1900r43s8f    Football                         M-1                            50
