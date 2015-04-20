@@ -565,7 +565,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								//This is where we do backorder.  If we do backorder we need 
 								//to output item price here and then instead of item total
 								// we need to output the word BACKORDERED
-							//	placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+							   
 								if(smalleQuantityForInvoice > 0){
 								cout<<smalleQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
@@ -584,7 +584,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								Invoicef<<temp->itemname;
 								}
 
-
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
 								cout<<numberStillNeeded;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
@@ -696,7 +696,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								//This is where we do backorder.  If we do backorder we need 
 								//to output item price here and then instead of item total
 								// we need to output the word BACKORDERED
-								//placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+	
 								if(mediumQuantityForInvoice > 0){
 								cout<<mediumQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
@@ -716,7 +716,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								}
 								
 								
-								
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
 								cout<<numberStillNeeded;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
@@ -822,7 +822,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								//This is where we do backorder.  If we do backorder we need 
 								//to output item price here and then instead of item total
 								// we need to output the word BACKORDERED
-							//	placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+						        placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
 								if(largeQuantityForInvoice > 0){
 								cout<<largeQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
@@ -840,6 +840,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
 								}	
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
 								cout<<numberStillNeeded;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
