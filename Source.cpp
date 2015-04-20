@@ -10,6 +10,7 @@
 #include <string>
 #include <fstream>
 #include <Windows.h>
+#include <sstream>
 using namespace std;
 ifstream File, Vendor, Customer; //Three file initializations.
 string itemtotal; //Total number of items in Catalogue string form.
@@ -1032,14 +1033,15 @@ void search(warehouse num[3], string itemID)
 				}
 			}
 }
-void saveProgress(warehouse num[3])
+void saveProgress(warehouse num[3], int dayCount)
 {
 	ofstream save("Progress.sav"); //Creates the save file for what is stored in warehouse
+	save << "Days: " << dayCount << endl;
 	for (int n = 0; n < 3; n++) //Writes what is in the warehouse.
 	{
 		save << "Warehouse " << n + 1 << endl;
 		for (int i = 0; i < 20; i++){
-			save << "smalle " << i << " ID: " << num[n].sloc[i].smalle[0] << " Count: " << num[n].sloc[i].smalle[1] << endl;
+			save << "small " << i << " ID: " << num[n].sloc[i].smalle[0] << " Count: " << num[n].sloc[i].smalle[1] << endl;
 		}
 		for (int i = 0; i < 60; i++){
 			save << "Medium " << i << " ID: " << num[n].medloc[i].medium[0] << " Count: " << num[n].medloc[i].medium[1] << endl;
@@ -1049,6 +1051,143 @@ void saveProgress(warehouse num[3])
 		}
 	}
 }
+void loadProgress(warehouse num[3], int dayCount)
+{
+	string line;
+	int size;
+	string token[10];
+	int n = 0;
+	int a = 1;
+	int k = 0;
+	int h = 0;
+	ifstream load("Progress.sav"); //Finds the save file to continue storing items
+	if (load.is_open())//If a file exists
+	{
+		while (!load.eof())//Reads the entire save file from start to finish
+		{
+			istringstream jkr;
+			getline(load, line);//Store each line into a string
+			jkr.str(line);
+
+			for (int d = 0; d < 6; d++) //Breaks the line into parts to be read
+			{
+				jkr >> token[d];
+			}
+
+			if (n == 0) //Initialize the day the work is being done
+			{
+				size = atoi(token[1].c_str());
+				while (dayCount < size)
+				{
+					dayCount++;
+				}
+				//cout << size << endl;
+				n++;
+			}
+			else if (n == 1) //Ignore this line
+			{
+				n++;
+			}
+
+			else if (n >= 2) //Stores the items line by line
+			{
+				if (k < 3) //Warehouse number
+				{
+					if (n >= 2 && n <= 20) //Stores the small items
+					{
+						if (token[3] != "Count:")
+						{
+							num[k].sloc[h].smalle[0] = token[3];
+							num[k].sloc[h].smalle[1] = token[5];
+						}
+						n++;
+						h++;
+					}
+					else if (n == 21) //Switch to storing the medium items
+					{
+						if (token[3] != "Count:")
+						{
+							num[k].sloc[h].smalle[0] = token[3];
+							num[k].sloc[h].smalle[1] = token[5];
+						}
+						n++;
+						h = 0;
+					}
+					else if (n >= 22 && n <= 80) //Stores the medium items
+					{
+						if (token[3] != "Count:")
+						{
+							num[k].medloc[h].medium[0] = token[3];
+							num[k].medloc[h].medium[1] = token[5];
+						}
+						n++;
+						h++;
+					}
+					else if (n == 81) //Switch to storing large items
+					{
+						if (token[3] != "Count:")
+						{
+							num[k].medloc[h].medium[0] = token[3];
+							num[k].medloc[h].medium[1] = token[5];
+						}
+						n++;
+						h = 0;
+					}
+					else if (n >= 82 && n <= 100) //Stores the large items
+					{
+						if (token[3] != "Count:")
+						{
+							num[k].lloc[h].large[0] = token[3];
+							num[k].lloc[h].large[1] = token[5];
+						}
+						n++;
+						h++;
+					}
+					else if (n == 101) //Switch to storing the small items in next warehouse
+					{
+						if (token[3] != "Count:")
+						{
+							num[k].lloc[h].large[0] = token[3];
+							num[k].lloc[h].large[1] = token[5];
+						}
+						n = 1;
+						h = 0;
+						k++;
+					}
+				}
+			}
+
+		}
+		for (int n = 0; n < 3; n++) //Test to see if the save is being read.
+		{
+			cout << "Day: " << dayCount << endl;
+			cout << "Warehouse " << n + 1 << endl;
+			for (int i = 0; i < 20; i++){
+				cout << "Small " << i << " ID: " << num[n].sloc[i].smalle[0] << " Count: " << num[n].sloc[i].smalle[1] << endl;
+
+			}
+			system("pause");
+			for (int i = 0; i < 60; i++){
+				cout << "Medium " << i << " ID: " << num[n].medloc[i].medium[0] << " Count: " << num[n].medloc[i].medium[1] << endl;
+
+			}
+			for (int i = 0; i < 20; i++){
+				cout << "Large " << i << " ID: " << num[n].lloc[i].large[0] << " Count: " << num[n].lloc[i].large[1] << endl;
+
+			}
+		}
+
+		cout << "Previous save is loaded." << endl;
+		load.close(); //Close the file
+	}
+	else //If save does not exist
+	{
+		cout << "Save file is not found." << endl;
+	}
+}
+ 
+
+
 int main()
 {
 	char isBackorder;
@@ -1115,6 +1254,7 @@ dayForDisaster += disasterRand;
 	}
 	cout<<"Catalogue Created"<<endl;
 	cout<<"Day 1"<<endl;
+	loadProgress(num, dayCount);
 		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
 		while(true)
 	{
@@ -1388,7 +1528,7 @@ dayForDisaster += disasterRand;
 	}
 	else if(userInput== '3')//Save and Quit
 	{
-		saveProgress(num);
+		saveProgress(num, dayCount);
 		cout << "Items and progress has been saved." << endl;
 		system("pause");
 		return 0;
