@@ -374,8 +374,8 @@ void customer(warehouse num[3])
 	warehousesChecked[1]= false;
 	warehousesChecked[2]= false;
 	getline(Customer, input);
-	fileid = input.substr(1, 4);
-	shipdate = input.substr(6, 8); 
+	fileid = input.substr(1, 4);//USE FOR BACKORDER CARL
+	shipdate = input.substr(6, 8);//USE FOR BACKORDER CARL
 	//cout <<endl<< "File #" << fileid << "  Shipping Date: " << shipdate.substr(0, 4) << "-" << shipdate.substr(4, 2) << "-" << shipdate.substr(6, 2) << endl << endl;
 	while (!Customer.eof()) 
 	{
@@ -858,6 +858,26 @@ void saveProgress(warehouse num[3])
 		}
 	}
 
+}
+void placeBackOrder(string fileid, string shipdate, string type, string last, string first, string straddr, string comma, string city, 
+	string state, string post, string country, string orderdate, string ordercount, string custid, string orderid, string payment, string discount, string item, string number, string count)
+{
+	//Enter placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+	//Wherever in customer a backorder needs to be placed
+	ofstream BackorderFile;
+	string filename = "BackOrder";
+	cout << "Please enter an ID for the backorder" << endl;
+	cout << "Keep in mind if not unique, will overwrite pre-existing backorders" << endl;
+	string BackOrderID;
+	cin >> BackOrderID;
+	filename = filename.append(BackOrderID);
+	filename = filename.append(".txt");
+	BackorderFile.open(filename);
+	BackorderFile << "H" << fileid << "-" << shipdate << endl;
+	BackorderFile << type << last << " " << first << " " << straddr << " " << comma << city << " " << state << " " << post << country << " " << orderdate << "1" << endl;
+	BackorderFile << custid << orderid << payment <<  " " << discount << endl;
+	BackorderFile << item << "-" << number << "-" << count << endl;
+	BackorderFile << "T1-1";
 }
 int main()
 {
