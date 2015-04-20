@@ -589,8 +589,8 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
-								cout<<"         BACKORDERED"<<endl;
-								Invoicef<<"        BACKORDERED"<<endl;
+								cout<<"    BACKORDERED"<<endl;
+								Invoicef<<"   BACKORDERED"<<endl;
 							}					
 						
 							}
@@ -721,8 +721,8 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
-								cout<<"         BACKORDERED"<<endl;
-								Invoicef<<"        BACKORDERED"<<endl;
+								cout<<"    BACKORDERED"<<endl;
+								Invoicef<<"   BACKORDERED"<<endl;
 							}					
 						
 							}
@@ -844,8 +844,8 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
-								cout<<"         BACKORDERED"<<endl;
-								Invoicef<<"        BACKORDERED"<<endl;
+								cout<<"    BACKORDERED"<<endl;
+								Invoicef<<"   BACKORDERED"<<endl;
 							}					
 					
 							}
