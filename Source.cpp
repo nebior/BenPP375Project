@@ -1243,15 +1243,18 @@ dayForDisaster += disasterRand;
 		vendor(num);
 		customer(num);
 		holidayHasHappened = false;
+		cout<<"This pause is so you can view the information processed after the disaster/holiday"<<endl;
+		system("pause");
 		}
 		if(disasterHasHappened == true){
 		MessageBoxA (NULL, "Yesterday's files are being processed before we ask you for today's files.", "The Disaster's Damage has been Undone!", MB_OK);
 		vendor(num);
 		customer(num);
 		disasterHasHappened = false;
-		}
 		cout<<"This pause is so you can view the information processed after the disaster/holiday"<<endl;
 		system("pause");
+		}
+		
 		remove( "Invoice.txt" );
 		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
 		cin.ignore();
