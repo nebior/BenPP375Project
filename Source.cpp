@@ -1111,6 +1111,7 @@ dayForDisaster += disasterRand;
 				}			
 	}
 	cout<<"Catalogue Created"<<endl;
+	cout<<"Day 1"<<endl;
 		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
 		while(true)
 	{
@@ -1134,6 +1135,7 @@ dayForDisaster += disasterRand;
 		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4. Abort without saving "<<endl;
 	cin>>userInput;
 	dayCount++;	
+	cout<<"Day "<<dayCount<<endl;
 	if(holidayHasHappened == true)
 	{
 	holidayRand = rand() % 13 + 1;//once every two weeks
@@ -1154,13 +1156,16 @@ dayForDisaster += disasterRand;
 	if(userInput == '1')//Next Day
 	{
 		//Group Functionality (Remove unordered of 5 days)
+
+		//if(holidayHasHappened == false && disasterHasHappened == false){
 		for(int n = 0; n<3; n++){
 				for(int i = 0; i<20; i++){
-					if(num[n].sloc[i].smalle[2] == "1" || num[n].sloc[i].smalle[2] == "2" || num[n].sloc[i].smalle[2] == "3" || num[n].sloc[i].smalle[2] == "4")
+					if(num[n].sloc[i].smalle[0] != ""){
+					if(num[n].sloc[i].smalle[2] == "0" ||num[n].sloc[i].smalle[2] == "1" || num[n].sloc[i].smalle[2] == "2" || num[n].sloc[i].smalle[2] == "3" || num[n].sloc[i].smalle[2] == "4")
 					{
 						int holde = (atoi(num[n].sloc[i].smalle[2].c_str()));	
 						holde+=1;
-						to_string(static_cast<long long>(holde));
+						num[n].sloc[i].smalle[2] = to_string(static_cast<long long>(holde));
 						holde=0;
 					}
 					else if(num[n].sloc[i].smalle[2] == "-1")
@@ -1177,12 +1182,14 @@ dayForDisaster += disasterRand;
 								}//delete the item
 					}
 				}
+				}
 				for(int i = 0; i<60; i++){
-						if(num[n].medloc[i].medium[2] == "1" || num[n].medloc[i].medium[2] == "2" || num[n].medloc[i].medium[2] == "3" || num[n].medloc[i].medium[2] == "4")
+					if(num[n].medloc[i].medium[0] != ""){
+						if(num[n].medloc[i].medium[2] == "0" || num[n].medloc[i].medium[2] == "1" || num[n].medloc[i].medium[2] == "2" || num[n].medloc[i].medium[2] == "3" || num[n].medloc[i].medium[2] == "4")
 					{
 						int holde = (atoi(num[n].medloc[i].medium[2].c_str()));	
 						holde+=1;
-						to_string(static_cast<long long>(holde));
+						num[n].medloc[i].medium[2] = to_string(static_cast<long long>(holde));
 						holde=0;
 					}
 					else if(num[n].medloc[i].medium[2] == "-1")
@@ -1199,12 +1206,14 @@ dayForDisaster += disasterRand;
 								}//delete the item
 					}
 				}
+				}
 				for(int i = 0; i<20; i++){
-					if(num[n].lloc[i].large[2] == "1" || num[n].lloc[i].large[2] == "2" || num[n].lloc[i].large[2] == "3" || num[n].lloc[i].large[2] == "4")
+					if(num[n].lloc[i].large[0] != ""){
+					if(num[n].lloc[i].large[2] == "0" || num[n].lloc[i].large[2] == "1" || num[n].lloc[i].large[2] == "2" || num[n].lloc[i].large[2] == "3" || num[n].lloc[i].large[2] == "4")
 					{
 						int holde = (atoi(num[n].lloc[i].large[2].c_str()));	
 						holde+=1;
-						to_string(static_cast<long long>(holde));
+						num[n].lloc[i].large[2] = to_string(static_cast<long long>(holde));
 						holde=0;
 					}
 					else if(num[n].lloc[i].large[2] == "-1")
@@ -1221,7 +1230,9 @@ dayForDisaster += disasterRand;
 								}//delete the item
 					}
 				}
+				}
 		}
+	
 		//Disaster/Holiday runs yesterday's files before asking for new ones.
 		if(holidayHasHappened == true)
 		{
@@ -1352,6 +1363,7 @@ dayForDisaster += disasterRand;
 	else
 	{
 	cout<<"Not a valid entry. Retype choice.";
+	dayCount--;
 	}
 	} while(userInput != '4');
 	system("pause");
