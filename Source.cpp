@@ -10,6 +10,7 @@
 #include <string>
 #include <fstream>
 #include <Windows.h>
+#include <sstream>
 using namespace std;
 ifstream File, Vendor, Customer; //Three file initializations.
 string itemtotal; //Total number of items in Catalogue string form.
@@ -960,6 +961,7 @@ void saveProgress(warehouse num[3], int dayCount)
 
 		}
 	}
+}
 	void loadProgress(warehouse num[3], int dayCount)
 	{
 		string line;
@@ -1002,8 +1004,8 @@ void saveProgress(warehouse num[3], int dayCount)
 						{
 							if (token[3] != "Count:")
 							{
-								num[k].sloc[h].small[0] = token[3];
-								num[k].sloc[h].small[1] = token[5];
+								num[k].sloc[h].smalle[0] = token[3];
+								num[k].sloc[h].smalle[1] = token[5];
 							}
 							n++;
 							h++;
@@ -1012,8 +1014,8 @@ void saveProgress(warehouse num[3], int dayCount)
 						{
 							if (token[3] != "Count:")
 							{
-								num[k].sloc[h].small[0] = token[3];
-								num[k].sloc[h].small[1] = token[5];
+								num[k].sloc[h].smalle[0] = token[3];
+								num[k].sloc[h].smalle[1] = token[5];
 							}
 							n++;
 							h = 0;
@@ -1063,11 +1065,12 @@ void saveProgress(warehouse num[3], int dayCount)
 				}
 
 			}
+
 			for (int n = 0; n < 3; n++) //Writes what is in the warehouse.
 			{
 				cout << "Warehouse " << n + 1 << endl;
 				for (int i = 0; i < 20; i++){
-					cout << "Small " << i << " ID: " << num[n].sloc[i].small[0] << " Count: " << num[n].sloc[i].small[1] << endl;
+					cout << "Small " << i << " ID: " << num[n].sloc[i].smalle[0] << " Count: " << num[n].sloc[i].smalle[1] << endl;
 
 				}
 				system("pause");
@@ -1084,12 +1087,13 @@ void saveProgress(warehouse num[3], int dayCount)
 			cout << "Previous save is loaded." << endl;
 			load.close();
 		}
+
 		else
 		{
 			cout << "Save file is not found." << endl;
 		}
 	}
-}
+
 int main()
 {
 	int holidayPick=0;
