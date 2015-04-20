@@ -26,6 +26,15 @@ struct lar
 {
 	string large[2]; //Position 0 is ID.  Position 1 is Number of items with that ID in this slot.
 };
+struct pickingItem
+{
+	int warehouseNumber;
+	string id;
+	string name;
+	string size;
+	int location;
+	int quantity;
+};
 struct list //Information about each item.
 {
 	string itemid;
@@ -361,6 +370,8 @@ void customer(warehouse num[3])
 	shipdate = input.substr(6, 8); 
 	while (!Customer.eof()) 
 	{
+		pickingItem outputHolder[1000];
+		int holderPosition = 0;
 		getline(Customer, input);//Type,Last,First
 		if (input.size()>13)  //If not last line of file, continue.
 		{
@@ -378,7 +389,7 @@ void customer(warehouse num[3])
 		//Invoice 
 			ofstream Invoicef;
 			Invoicef.open("Invoice.txt",::ofstream::app);
-			cout<<endl<<first<<" "<<last<<endl;
+		/*	cout<<endl<<first<<" "<<last<<endl;
 			cout<<straddr<<endl;
 			cout<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){cout<<country;}
 			cout<<endl;
@@ -388,6 +399,7 @@ void customer(warehouse num[3])
 			cout<<"Shipping Date: "<<shipdate.substr(4, 2)  << "-" <<shipdate.substr(6, 2) << "-" <<shipdate.substr(0, 4) << endl;
 			cout<<"Payment Type: "<<payment<<endl<<endl;
 			cout<<"Item ID      Item Name                 Quantity     Price          Item total"<<endl;
+			*/
 			Invoicef<<endl<<first<<" "<<last<<endl;
 			Invoicef<<straddr<<endl;
 			Invoicef<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){Invoicef<<country;}
@@ -411,7 +423,7 @@ void customer(warehouse num[3])
 				int numberStillNeeded = (atoi(count.c_str()));			
 		if (check(item, head, total) != true)
 				{
-					cout << "Item " << item << " is not in the catalogue, will not store item." << endl;
+					//cout << "Item " << item << " is not in the catalogue, will not store item." << endl;
 					Invoicef << "Item " << item << " is not in the catalogue, will not store item." << endl;
 				}
 				else
@@ -424,8 +436,8 @@ void customer(warehouse num[3])
 						{
 							itemsize = temp->itemsize; //Grabs Item Size from catalogue.
 							sizeFound=true;//We found the size
-								cout<<temp->itemid<<"  ";
-								cout<<temp->itemname;
+								//cout<<temp->itemid<<"  ";
+								//cout<<temp->itemname;
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
 						}
@@ -464,15 +476,23 @@ int smalleGivenToCustomer = 0;
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
-								cout<<smalleQuantityForInvoice;
-								cout<<"          $ "<<temp->itemprice;
+								//cout<<smalleQuantityForInvoice;
+								//cout<<"          $ "<<temp->itemprice;
 								Invoicef<<smalleQuantityForInvoice;
 								Invoicef<<"          $ "<<temp->itemprice;
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = smalleQuantityForInvoice * (stod(itemPriceHolder.c_str()));
-								cout<<"      $ "<<priceHolder<<endl;
+								//cout<<"      $ "<<priceHolder<<endl;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
+								//Packing List storage
+								outputHolder[holderPosition].warehouseNumber = n+1;
+								outputHolder[holderPosition].id = temp->itemid;
+								outputHolder[holderPosition].name = temp->itemname;
+								outputHolder[holderPosition].size = temp->itemsize;
+								outputHolder[holderPosition].location = s;
+								outputHolder[holderPosition].quantity = smalleQuantityForInvoice;
+								holderPosition++;
 								num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].smalle[1]
 							if(num[n].sloc[s].smalle[1] == "0")//Delete item in that slot if we empty slot
 								{
@@ -522,28 +542,36 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								warehousesChecked[2]= false;
 								doneFillingOrder = true;						   
 								if(smalleQuantityForInvoice > 0){
-								cout<<smalleQuantityForInvoice;
-								cout<<"          $ "<<temp->itemprice;
+								//cout<<smalleQuantityForInvoice;
+								//cout<<"          $ "<<temp->itemprice;
 								Invoicef<<smalleQuantityForInvoice;
 								Invoicef<<"          $ "<<temp->itemprice;
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = smalleQuantityForInvoice * (stod(itemPriceHolder.c_str()));
-								cout<<"      $ "<<priceHolder<<endl;
+								//cout<<"      $ "<<priceHolder<<endl;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
+								//Packing List storage
+								outputHolder[holderPosition].warehouseNumber = n+1;
+								outputHolder[holderPosition].id = temp->itemid;
+								outputHolder[holderPosition].name = temp->itemname;
+								outputHolder[holderPosition].size = temp->itemsize;
+								outputHolder[holderPosition].location = s;
+								outputHolder[holderPosition].quantity = smalleQuantityForInvoice;
+								holderPosition++;
 								int numberAlreadyInWarehouse = (atoi(num[n].sloc[s].smalle[1].c_str()));
 								num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].smalle[1]
-								cout<<temp->itemid<<"  ";
-								cout<<temp->itemname;
+							    //cout<<temp->itemid<<"  ";
+								//cout<<temp->itemname;
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
 								}
 								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
-								cout<<numberStillNeeded;
-								cout<<"          $ "<<temp->itemprice;
+								//cout<<numberStillNeeded;
+								//cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
-								cout<<"    BACKORDERED"<<endl;
+								//cout<<"    BACKORDERED"<<endl;
 								Invoicef<<"   BACKORDERED"<<endl;
 							}											
 							}
@@ -578,15 +606,23 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below							
-								cout<<mediumQuantityForInvoice;
-								cout<<"          $ "<<temp->itemprice;
+								//cout<<mediumQuantityForInvoice;
+								//cout<<"          $ "<<temp->itemprice;
 								Invoicef<<mediumQuantityForInvoice;
 								Invoicef<<"          $ "<<temp->itemprice;
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = mediumQuantityForInvoice * (stod(itemPriceHolder.c_str()));
-								cout<<"      $ "<<priceHolder<<endl;
+								//cout<<"      $ "<<priceHolder<<endl;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
+									//Packing List storage
+								outputHolder[holderPosition].warehouseNumber = n+1;
+								outputHolder[holderPosition].id = temp->itemid;
+								outputHolder[holderPosition].name = temp->itemname;
+								outputHolder[holderPosition].size = temp->itemsize;
+								outputHolder[holderPosition].location = m;
+								outputHolder[holderPosition].quantity = mediumQuantityForInvoice;
+								holderPosition++;
 	num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].medium[1]								
 						if(num[n].medloc[m].medium[1] == "0")//Delete item in that slot if we empty slot
 								{
@@ -643,28 +679,36 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								warehousesChecked[2]= false;
 								doneFillingOrder = true;
 								if(mediumQuantityForInvoice > 0){
-								cout<<mediumQuantityForInvoice;
-								cout<<"          $ "<<temp->itemprice;
+								//cout<<mediumQuantityForInvoice;
+								//cout<<"          $ "<<temp->itemprice;
 								Invoicef<<mediumQuantityForInvoice;
 								Invoicef<<"          $ "<<temp->itemprice;
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = mediumQuantityForInvoice * (stod(itemPriceHolder.c_str()));
-								cout<<"      $ "<<priceHolder<<endl;
+								//cout<<"      $ "<<priceHolder<<endl;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
+									//Packing List storage
+								outputHolder[holderPosition].warehouseNumber = n+1;
+								outputHolder[holderPosition].id = temp->itemid;
+								outputHolder[holderPosition].name = temp->itemname;
+								outputHolder[holderPosition].size = temp->itemsize;
+								outputHolder[holderPosition].location = m;
+								outputHolder[holderPosition].quantity = mediumQuantityForInvoice;
+								holderPosition++;
 								int numberAlreadyInWarehouse = (atoi(num[n].medloc[m].medium[1].c_str()));
 								num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].med[1]
-								cout<<temp->itemid<<"  ";
-								cout<<temp->itemname;
+								//cout<<temp->itemid<<"  ";
+								//cout<<temp->itemname;
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
 								}		
 								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
-								cout<<numberStillNeeded;
-								cout<<"          $ "<<temp->itemprice;
+								//cout<<numberStillNeeded;
+								//cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
-								cout<<"    BACKORDERED"<<endl;
+								//cout<<"    BACKORDERED"<<endl;
 								Invoicef<<"   BACKORDERED"<<endl;
 							}					
 							}
@@ -699,15 +743,23 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 							{
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
-								cout<<largeQuantityForInvoice;
-								cout<<"          $ "<<temp->itemprice;
+								//cout<<largeQuantityForInvoice;
+								//cout<<"          $ "<<temp->itemprice;
 								Invoicef<<largeQuantityForInvoice;
 								Invoicef<<"          $ "<<temp->itemprice;
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = largeQuantityForInvoice * (stod(itemPriceHolder.c_str()));
-								cout<<"      $ "<<priceHolder<<endl;
+								//cout<<"      $ "<<priceHolder<<endl;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
+									//Packing List storage
+								outputHolder[holderPosition].warehouseNumber = n+1;
+								outputHolder[holderPosition].id = temp->itemid;
+								outputHolder[holderPosition].name = temp->itemname;
+								outputHolder[holderPosition].size = temp->itemsize;
+								outputHolder[holderPosition].location = l;
+								outputHolder[holderPosition].quantity = largeQuantityForInvoice;
+								holderPosition++;
 									num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].large[1]
 						if(num[n].lloc[l].large[1] == "0")//Delete item in that slot if we empty slot
 								{
@@ -757,28 +809,36 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								doneFillingOrder = true;
 								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
 								if(largeQuantityForInvoice > 0){
-								cout<<largeQuantityForInvoice;
-								cout<<"          $ "<<temp->itemprice;
+								//cout<<largeQuantityForInvoice;
+								//cout<<"          $ "<<temp->itemprice;
 								Invoicef<<largeQuantityForInvoice;
 								Invoicef<<"          $ "<<temp->itemprice;
 								string itemPriceHolder = temp->itemprice;
 								double priceHolder = largeQuantityForInvoice * (stod(itemPriceHolder.c_str()));
-								cout<<"      $ "<<priceHolder<<endl;
+								//cout<<"      $ "<<priceHolder<<endl;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
+								//Packing List storage
+								outputHolder[holderPosition].warehouseNumber = n+1;
+								outputHolder[holderPosition].id = temp->itemid;
+								outputHolder[holderPosition].name = temp->itemname;
+								outputHolder[holderPosition].size = temp->itemsize;
+								outputHolder[holderPosition].location = l;
+								outputHolder[holderPosition].quantity = largeQuantityForInvoice;
+								holderPosition++;
 								int numberAlreadyInWarehouse = (atoi(num[n].lloc[l].large[1].c_str()));
 								num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].med[1]
-								cout<<temp->itemid<<"  ";
-								cout<<temp->itemname;
+								//cout<<temp->itemid<<"  ";
+								//cout<<temp->itemname;
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
 								}	
 								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
-								cout<<numberStillNeeded;
-								cout<<"          $ "<<temp->itemprice;
+								//cout<<numberStillNeeded;
+								//cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
-								cout<<"    BACKORDERED"<<endl;
+								//cout<<"    BACKORDERED"<<endl;
 								Invoicef<<"   BACKORDERED"<<endl;
 							}					
 							}
@@ -787,29 +847,88 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 						}						
 					}//end Large
 }	
-//Math For Invoice
+
 if(j == 1){
-			cout<<endl<<"Subtotal "<<"\t\t\t\t\t\t\t\t"<<overallSubtotal<<endl;	
+	//Math For Invoice
+			//cout<<endl<<"Subtotal "<<"\t\t\t\t\t\t\t\t"<<overallSubtotal<<endl;	
 			Invoicef<<endl<<"Subtotal "<<"\t\t\t\t\t\t\t\t"<<overallSubtotal<<endl;	
-			cout<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
+			//cout<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
 			Invoicef<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
 			Invoicef<<"Discount Percentage --"<<discount<<"\t\t\t\t\t\t"<<overallSubtotal * ((stod(discount.c_str()))/100)<<endl;
-			cout<<"Discount Percentage --"<<discount<<"\t\t\t\t\t\t"<<overallSubtotal * ((stod(discount.c_str()))/100)<<endl;	
+			//cout<<"Discount Percentage --"<<discount<<"\t\t\t\t\t\t"<<overallSubtotal * ((stod(discount.c_str()))/100)<<endl;	
 			double discountedPrice = (overallSubtotal - overallSubtotal * ((stod(discount.c_str()))/100));
-			cout<<"Order Total "<<"\t\t\t\t\t\t\t\t"<<discountedPrice<<endl;	
+			/*cout<<"Order Total "<<"\t\t\t\t\t\t\t\t"<<discountedPrice<<endl;	
 			cout<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
 			cout<<"Tax      6%"<<"\t\t\t\t\t\t\t\t"<<(discountedPrice * .06)<<endl;
-			cout<<"Amount Due in "<<payment<<"\t\t\t\t\t\t"<<discountedPrice   +((overallSubtotal * ((stod(discount.c_str()))/100)) * .06)<<endl;
+			cout<<"Amount Due in "<<payment<<"\t\t\t\t\t\t"<<discountedPrice   +((overallSubtotal * ((stod(discount.c_str()))/100)) * .06)<<endl;*/
 			Invoicef<<"Order Total "<<"\t\t\t\t\t\t\t\t"<<discountedPrice<<endl;	
 			Invoicef<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;	
 			Invoicef<<"Tax      6%"<<"\t\t\t\t\t\t\t\t"<<(discountedPrice * .06)<<endl;
 			Invoicef<<"Amount Due in "<<payment<<"\t\t\t\t\t\t"<<discountedPrice   +((overallSubtotal * ((stod(discount.c_str()))/100)) * .06)<<endl;
+	//Picking/Packing slip Header
+			//cout
+			/*cout<<"Customer ID: " <<custid<<endl;
+			cout<<endl<<first<<" "<<last<<endl;
+			cout<<straddr<<endl;
+			cout<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){cout<<country;}
+			cout<<endl;	
+			cout<<"Order ID: " <<orderid<<endl;
+			cout<<"Order Date: "<< orderdate.substr(4, 2)  << "-" << orderdate.substr(6, 2) << "-" << orderdate.substr(0, 4) << endl;
+			cout<<"Shipping Date: "<<shipdate.substr(4, 2)  << "-" <<shipdate.substr(6, 2) << "-" <<shipdate.substr(0, 4) << endl;
+			*/
+			//file
+			Invoicef<<"Customer ID: " <<custid<<endl;
+			Invoicef<<endl<<first<<" "<<last<<endl;
+			Invoicef<<straddr<<endl;
+			Invoicef<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){Invoicef<<country;}
+			Invoicef<<endl;	
+			Invoicef<<"Order ID: " <<orderid<<endl;
+			Invoicef<<"Order Date: "<< orderdate.substr(4, 2)  << "-" << orderdate.substr(6, 2) << "-" << orderdate.substr(0, 4) << endl;
+			Invoicef<<"Shipping Date: "<<shipdate.substr(4, 2)  << "-" <<shipdate.substr(6, 2) << "-" <<shipdate.substr(0, 4) << endl;
+//Warehouse 1 slip    ID          Name                      Size-Slot Number       #fromSlot
+			//cout<<"Item ID Item Name          Warehouse 1 \t\t\t\t\t Location     Quantity"<<endl;
+		    Invoicef<<"Item ID      Item Name                 Warehouse 1 Location     Quantity"<<endl;	
+			for(int d = 0; d<1000; d++){
+				if(outputHolder[d].warehouseNumber == 1)
+				{
+//cout<<outputHolder[d].id<<"\t\t\t"<<outputHolder[d].name<<"     "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;
+Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<" "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;																														
+			}
+			}
+//Warehouse 2 slip
+			//cout<<"Item ID Item Name          Warehouse 2 \t\t\t Location     Quantity"<<endl;
+		    Invoicef<<"Item ID     Item Name                 Warehouse 2 Location     Quantity"<<endl;
+			for(int d = 0; d<1000; d++){
+				if(outputHolder[d].warehouseNumber == 2)
+				{
+//cout<<outputHolder[d].id<<"\t\t\t"<<outputHolder[d].name<<"     "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;
+Invoicef<<outputHolder[d].id<<"   "<<outputHolder[d].name<<" "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;																														
+			}
+			}
+//Warehouse 3 slip
+			//cout<<"Item ID Item Name          Warehouse 3 \t\t\t\t\t Location     Quantity"<<endl;
+		    Invoicef<<"Item ID     Item Name                 Warehouse 3 Location     Quantity"<<endl;	
+			for(int d = 0; d<1000; d++){
+				if(outputHolder[d].warehouseNumber == 3)
+				{
+//cout<<outputHolder[d].id<<"\t\t\t"<<outputHolder[d].name<<"     "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;
+Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<" "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;																														
+			}
 		  }
+}
 }//for loop end
-		}//if >13 close
-		else
-		{			
-		}
+	for(int d = 0; d<1000; d++)
+{
+								outputHolder[d].warehouseNumber = 0;
+								outputHolder[d].id = "";
+								outputHolder[d].name = "";
+								outputHolder[d].size = "";
+								outputHolder[d].location = 0;
+								outputHolder[d].quantity = 0;
+								holderPosition++;
+}
+	}//if >13 close
+
 	}			
 }
 void search(warehouse num[3], string itemID)
@@ -922,7 +1041,7 @@ dayForDisaster += disasterRand;
 		}
 		customer(num);
 	do {
-		cout<<endl<<"Please select and action below "<<endl;
+		cout<<endl<<"The day's files have been processed and output to the Invoice.txt file."<<endl<<endl<< "Please select and action below "<<endl;
 		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4. Abort without saving "<<endl;
 	cin>>userInput;
 	dayCount++;	
