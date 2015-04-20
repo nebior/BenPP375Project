@@ -491,7 +491,7 @@ int smalleGivenToCustomer = 0;
 								outputHolder[holderPosition].name = temp->itemname;
 								outputHolder[holderPosition].size = temp->itemsize;
 								outputHolder[holderPosition].location = s;
-								outputHolder[holderPosition].quantity = smalleQuantityForInvoice;
+								outputHolder[holderPosition].quantity = smalleGivenToCustomer;
 								holderPosition++;
 								num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].smalle[1]
 							if(num[n].sloc[s].smalle[1] == "0")//Delete item in that slot if we empty slot
@@ -507,6 +507,16 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								{
 									num[n].sloc[s].smalle[0] = "";
 									num[n].sloc[s].smalle[1] = "";
+								}
+								if(s!=0){
+								//Packing List storage
+								outputHolder[holderPosition].warehouseNumber = n+1;
+								outputHolder[holderPosition].id = temp->itemid;
+								outputHolder[holderPosition].name = temp->itemname;
+								outputHolder[holderPosition].size = temp->itemsize;
+								outputHolder[holderPosition].location = s;
+								outputHolder[holderPosition].quantity = smalleGivenToCustomer;
+								holderPosition++;
 								}
 							}
 							else//Items in warehouse = items needed by customer
@@ -557,7 +567,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								outputHolder[holderPosition].name = temp->itemname;
 								outputHolder[holderPosition].size = temp->itemsize;
 								outputHolder[holderPosition].location = s;
-								outputHolder[holderPosition].quantity = smalleQuantityForInvoice;
+								outputHolder[holderPosition].quantity = smalleGivenToCustomer;
 								holderPosition++;
 								int numberAlreadyInWarehouse = (atoi(num[n].sloc[s].smalle[1].c_str()));
 								num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].smalle[1]
@@ -621,7 +631,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								outputHolder[holderPosition].name = temp->itemname;
 								outputHolder[holderPosition].size = temp->itemsize;
 								outputHolder[holderPosition].location = m;
-								outputHolder[holderPosition].quantity = mediumQuantityForInvoice;
+								outputHolder[holderPosition].quantity = mediumGivenToCustomer;
 								holderPosition++;
 	num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].medium[1]								
 						if(num[n].medloc[m].medium[1] == "0")//Delete item in that slot if we empty slot
@@ -638,6 +648,16 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								{
 									num[n].medloc[m].medium[0] = "";
 									num[n].medloc[m].medium[1] = "";
+								}
+									if(m!=0){
+								//Packing List storage
+								outputHolder[holderPosition].warehouseNumber = n+1;
+								outputHolder[holderPosition].id = temp->itemid;
+								outputHolder[holderPosition].name = temp->itemname;
+								outputHolder[holderPosition].size = temp->itemsize;
+								outputHolder[holderPosition].location = m;
+								outputHolder[holderPosition].quantity = mediumGivenToCustomer;
+								holderPosition++;
 								}
 							}
 							else//Items in warehouse = items needed by customer
@@ -694,7 +714,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								outputHolder[holderPosition].name = temp->itemname;
 								outputHolder[holderPosition].size = temp->itemsize;
 								outputHolder[holderPosition].location = m;
-								outputHolder[holderPosition].quantity = mediumQuantityForInvoice;
+								outputHolder[holderPosition].quantity = mediumGivenToCustomer;
 								holderPosition++;
 								int numberAlreadyInWarehouse = (atoi(num[n].medloc[m].medium[1].c_str()));
 								num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].med[1]
@@ -758,7 +778,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								outputHolder[holderPosition].name = temp->itemname;
 								outputHolder[holderPosition].size = temp->itemsize;
 								outputHolder[holderPosition].location = l;
-								outputHolder[holderPosition].quantity = largeQuantityForInvoice;
+								outputHolder[holderPosition].quantity = largeGivenToCustomer;
 								holderPosition++;
 									num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].large[1]
 						if(num[n].lloc[l].large[1] == "0")//Delete item in that slot if we empty slot
@@ -774,6 +794,16 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								{
 									num[n].lloc[l].large[0] = "";
 									num[n].lloc[l].large[1] = "";
+								}
+							if(l!=0){
+								//Packing List storage
+								outputHolder[holderPosition].warehouseNumber = n+1;
+								outputHolder[holderPosition].id = temp->itemid;
+								outputHolder[holderPosition].name = temp->itemname;
+								outputHolder[holderPosition].size = temp->itemsize;
+								outputHolder[holderPosition].location = l;
+								outputHolder[holderPosition].quantity = largeGivenToCustomer;
+								holderPosition++;
 								}
 							}
 							else//Items in warehouse = items needed by customer
@@ -824,7 +854,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								outputHolder[holderPosition].name = temp->itemname;
 								outputHolder[holderPosition].size = temp->itemsize;
 								outputHolder[holderPosition].location = l;
-								outputHolder[holderPosition].quantity = largeQuantityForInvoice;
+								outputHolder[holderPosition].quantity = largeGivenToCustomer;
 								holderPosition++;
 								int numberAlreadyInWarehouse = (atoi(num[n].lloc[l].large[1].c_str()));
 								num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].med[1]
@@ -849,6 +879,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 }	
 
 if(j == 1){
+	int total = 0;
 	//Math For Invoice
 			//cout<<endl<<"Subtotal "<<"\t\t\t\t\t\t\t\t"<<overallSubtotal<<endl;	
 			Invoicef<<endl<<"Subtotal "<<"\t\t\t\t\t\t\t\t"<<overallSubtotal<<endl;	
@@ -887,33 +918,72 @@ if(j == 1){
 			Invoicef<<"Shipping Date: "<<shipdate.substr(4, 2)  << "-" <<shipdate.substr(6, 2) << "-" <<shipdate.substr(0, 4) << endl;
 //Warehouse 1 slip    ID          Name                      Size-Slot Number       #fromSlot
 			//cout<<"Item ID Item Name          Warehouse 1 \t\t\t\t\t Location     Quantity"<<endl;
-		    Invoicef<<"Item ID      Item Name                 Warehouse 1 Location     Quantity"<<endl;	
+		    Invoicef<<"Item ID      Item Name             Warehouse 1 Location(1-20 or 1-60)     Quantity"<<endl;	
 			for(int d = 0; d<1000; d++){
 				if(outputHolder[d].warehouseNumber == 1)
 				{
 //cout<<outputHolder[d].id<<"\t\t\t"<<outputHolder[d].name<<"     "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;
-Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<" "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;																														
-			}
+Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<"   "<<outputHolder[d].size<<"-"<<outputHolder[d].location+1<<"                            "<<outputHolder[d].quantity<<endl;																														
+			if(outputHolder[d+1].id == outputHolder[d].id && outputHolder[d+1].warehouseNumber == outputHolder[d].warehouseNumber)
+				{
+					total+=outputHolder[d].quantity;
+				}
+				else
+				{
+					if(total != 0)
+					{
+						total+=outputHolder[d].quantity;
+						Invoicef<<"                                               Total:                        "<<total<<endl;
+						total = 0;
+					}
+				}
+				}
 			}
 //Warehouse 2 slip
 			//cout<<"Item ID Item Name          Warehouse 2 \t\t\t Location     Quantity"<<endl;
-		    Invoicef<<"Item ID     Item Name                 Warehouse 2 Location     Quantity"<<endl;
+		    Invoicef<<"Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity"<<endl;
 			for(int d = 0; d<1000; d++){
 				if(outputHolder[d].warehouseNumber == 2)
 				{
 //cout<<outputHolder[d].id<<"\t\t\t"<<outputHolder[d].name<<"     "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;
-Invoicef<<outputHolder[d].id<<"   "<<outputHolder[d].name<<" "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;																														
+Invoicef<<outputHolder[d].id<<"   "<<outputHolder[d].name<<"   "<<outputHolder[d].size<<"-"<<outputHolder[d].location+1<<"                            "<<outputHolder[d].quantity<<endl;
+				if(outputHolder[d+1].id == outputHolder[d].id && outputHolder[d+1].warehouseNumber == outputHolder[d].warehouseNumber)
+				{
+					total+=outputHolder[d].quantity;
+				}
+				else
+				{
+					if(total != 0)
+					{
+						total+=outputHolder[d].quantity;
+						Invoicef<<"                                              Total:                        "<<total<<endl;
+						total = 0;
+					}
+				}
 			}
 			}
 //Warehouse 3 slip
 			//cout<<"Item ID Item Name          Warehouse 3 \t\t\t\t\t Location     Quantity"<<endl;
-		    Invoicef<<"Item ID     Item Name                 Warehouse 3 Location     Quantity"<<endl;	
+		    Invoicef<<"Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity"<<endl;	
 			for(int d = 0; d<1000; d++){
 				if(outputHolder[d].warehouseNumber == 3)
 				{
 //cout<<outputHolder[d].id<<"\t\t\t"<<outputHolder[d].name<<"     "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;
-Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<" "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;																														
-			}
+Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<"   "<<outputHolder[d].size<<"-"<<outputHolder[d].location+1<<"                            "<<outputHolder[d].quantity<<endl;																														
+			if(outputHolder[d+1].id == outputHolder[d].id && outputHolder[d+1].warehouseNumber == outputHolder[d].warehouseNumber)
+				{
+					total+=outputHolder[d].quantity;
+				}
+				else
+				{
+					if(total != 0)
+					{
+						total+=outputHolder[d].quantity;
+						Invoicef<<"                                              Total:                        "<<total<<endl;
+						total = 0;
+					}
+				}
+				}
 		  }
 }
 }//for loop end
