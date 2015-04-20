@@ -36,6 +36,23 @@ struct list //Information about each item.
 	list *next; //Will be a linked list.
 };
 list *head;  //Catalogue of items
+void placeBackOrder(string fileid, string shipdate, string type, string last, string first, string straddr, string comma, string city, string state, string post, string country, string orderdate, string ordercount, string custid, string orderid, string payment, string discount, string item, string number, string count)
+{
+	ofstream BackorderFile;
+	string filename = "BackOrder";
+	cout << "Please enter an ID for the backorder" << endl;
+	cout << "Keep in mind if not unique, will overwrite pre-existing backorders" << endl;
+	string BackOrderID;
+	cin >> BackOrderID;
+	filename = filename.append(BackOrderID);
+	filename = filename.append(".txt");
+	BackorderFile.open(filename);
+	BackorderFile << "H" << fileid << "-" << shipdate << endl;
+	BackorderFile << type << last << first << straddr << comma << city << state << post << country << orderdate << "1" << endl;
+	BackorderFile << custid << orderid << payment << discount << endl;
+	BackorderFile << item << "-" << number << "-" << count << endl;
+	BackorderFile << "T1-1" << endl;
+}
 struct warehouse  //Contains the slots for each size of item.
 {
 	sm sloc[20];//20 smalle slots
@@ -553,6 +570,13 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								//This is where we do backorder.  If we do backorder we need 
 								//to output item price here and then instead of item total
 								// we need to output the word BACKORDERED
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+								cout<<smalleQuantityForInvoice;
+								cout<<"          $ "<<temp->itemprice;
+								Invoicef<<smalleQuantityForInvoice;
+								Invoicef<<"          $ "<<temp->itemprice;
+								cout<<"         BACKORDERED"<<endl;
+								Invoicef<<"        BACKORDERED"<<endl;
 							}					
 						
 							}
@@ -658,6 +682,13 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								//This is where we do backorder.  If we do backorder we need 
 								//to output item price here and then instead of item total
 								// we need to output the word BACKORDERED
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+								cout<<mediumQuantityForInvoice;
+								cout<<"          $ "<<temp->itemprice;
+								Invoicef<<mediumQuantityForInvoice;
+								Invoicef<<"          $ "<<temp->itemprice;
+								cout<<"         BACKORDERED"<<endl;
+								Invoicef<<"        BACKORDERED"<<endl;
 							}					
 						
 							}
@@ -757,6 +788,13 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								//This is where we do backorder.  If we do backorder we need 
 								//to output item price here and then instead of item total
 								// we need to output the word BACKORDERED
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+								cout<<largeQuantityForInvoice;
+								cout<<"          $ "<<temp->itemprice;
+								Invoicef<<largeQuantityForInvoice;
+								Invoicef<<"          $ "<<temp->itemprice;
+								cout<<"         BACKORDERED"<<endl;
+								Invoicef<<"        BACKORDERED"<<endl;
 							}					
 						
 							}
