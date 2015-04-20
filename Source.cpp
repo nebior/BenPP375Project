@@ -4,7 +4,7 @@
 //
 //  Created by Programing Programing Prodigies on 4/8/15.
 //  Copyright (c) 2015 Programing Prodigies. All rights reserved.
-//  Latest Change 4/19/15 11:46pm 4/19/2015
+//  Latest Change 4/19/15 3:13pm 4/20/2015
 //
 #include <iostream>
 #include <string>
@@ -16,15 +16,15 @@ string itemtotal; //Total number of items in Catalogue string form.
 int total = 0; //Total number of items in catalogue, converted to int.
 struct sm
 {
-	string smalle[2]; //Position 0 is ID.  Position 1 is Number of items with that ID in this slot.
+	string smalle[3]; //Position 0 is ID.  Position 1 is Number of items with that ID in this slot. Position 2 is days unordred.
 };
 struct med
 {
-	string medium[2]; //Position 0 is ID.  Position 1 is Number of items with that ID in this slot.
+	string medium[3]; //Position 0 is ID.  Position 1 is Number of items with that ID in this slot. Position 2 is days unordred.
 };
 struct lar
 {
-	string large[2]; //Position 0 is ID.  Position 1 is Number of items with that ID in this slot.
+	string large[3]; //Position 0 is ID.  Position 1 is Number of items with that ID in this slot. Position 2 is days unordred.
 };
 struct pickingItem
 {
@@ -424,7 +424,7 @@ void customer(warehouse num[3])
 		if (check(item, head, total) != true)
 				{
 					//cout << "Item " << item << " is not in the catalogue, will not store item." << endl;
-					Invoicef << "Item " << item << " is not in the catalogue, will not store item." << endl;
+					Invoicef << "Item " << item << " is not in the catalogue, cannot order item." << endl;
 				}
 				else
 				{
@@ -474,6 +474,7 @@ int smalleGivenToCustomer = 0;
 							}
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
+								num[n].sloc[s].smalle[2] = "-1";
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
 								//cout<<smalleQuantityForInvoice;
@@ -508,6 +509,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 									num[n].sloc[s].smalle[0] = "";
 									num[n].sloc[s].smalle[1] = "";
 								}
+								num[n].sloc[s].smalle[2] = "-1";
 								if(s!=0){
 								//Packing List storage
 								outputHolder[holderPosition].warehouseNumber = n+1;
@@ -614,6 +616,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 							}
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
+								num[n].medloc[m].medium[2] = "-1";
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below							
 								//cout<<mediumQuantityForInvoice;
@@ -649,6 +652,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 									num[n].medloc[m].medium[0] = "";
 									num[n].medloc[m].medium[1] = "";
 								}
+									num[n].medloc[m].medium[2] = "-1";
 									if(m!=0){
 								//Packing List storage
 								outputHolder[holderPosition].warehouseNumber = n+1;
@@ -761,6 +765,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 							}
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
+								num[n].lloc[l].large[2] = "-1";
 								doneFillingOrder = true;//We have given the customer all we have
 								//Invoice Output Below
 								//cout<<largeQuantityForInvoice;
@@ -795,6 +800,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 									num[n].lloc[l].large[0] = "";
 									num[n].lloc[l].large[1] = "";
 								}
+								num[n].lloc[l].large[2] = "-1";
 							if(l!=0){
 								//Packing List storage
 								outputHolder[holderPosition].warehouseNumber = n+1;
@@ -1091,6 +1097,19 @@ dayForDisaster += disasterRand;
 	head = new list;
 	int dayCount = 1;
 	setuplist(head);
+
+	for(int n = 0; n<3; n++){//set all day counts to 0 for items
+				for(int i = 0; i<20; i++){
+					num[n].sloc[i].smalle[2] = "0";			
+				}
+	
+				for(int i = 0; i<60; i++){
+					num[n].medloc[i].medium[2] = "0";	
+				}
+				for(int i = 0; i<20; i++){
+					num[n].lloc[i].large[2] = "0";	
+				}			
+	}
 	cout<<"Catalogue Created"<<endl;
 		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
 		while(true)
@@ -1134,6 +1153,75 @@ dayForDisaster += disasterRand;
 	//Menu
 	if(userInput == '1')//Next Day
 	{
+		//Group Functionality (Remove unordered of 5 days)
+		for(int n = 0; n<3; n++){
+				for(int i = 0; i<20; i++){
+					if(num[n].sloc[i].smalle[2] == "1" || num[n].sloc[i].smalle[2] == "2" || num[n].sloc[i].smalle[2] == "3" || num[n].sloc[i].smalle[2] == "4")
+					{
+						int holde = (atoi(num[n].sloc[i].smalle[2].c_str()));	
+						holde+=1;
+						to_string(static_cast<long long>(holde));
+						holde=0;
+					}
+					else if(num[n].sloc[i].smalle[2] == "-1")
+					{
+						num[n].sloc[i].smalle[2] = "0";
+					}
+					if(num[n].sloc[i].smalle[2] == "5")
+					{
+						cout<<num[n].sloc[i].smalle[1]<<" of item "<<num[n].sloc[i].smalle[0]<<" removed from warehouse "<<n<<" location "<<i<<" since it had not been ordered for 5 days"<<endl;
+						if(num[n].sloc[i].smalle[1] == "0")//delete the item
+								{
+									num[n].sloc[i].smalle[0] = "";
+									num[n].sloc[i].smalle[1] = "";
+								}//delete the item
+					}
+				}
+				for(int i = 0; i<60; i++){
+						if(num[n].medloc[i].medium[2] == "1" || num[n].medloc[i].medium[2] == "2" || num[n].medloc[i].medium[2] == "3" || num[n].medloc[i].medium[2] == "4")
+					{
+						int holde = (atoi(num[n].medloc[i].medium[2].c_str()));	
+						holde+=1;
+						to_string(static_cast<long long>(holde));
+						holde=0;
+					}
+					else if(num[n].medloc[i].medium[2] == "-1")
+					{
+						num[n].medloc[i].medium[2] = "0";
+					}
+					if(num[n].medloc[i].medium[2] == "5")
+					{
+						cout<<num[n].medloc[i].medium[1]<<" of item "<<num[n].medloc[i].medium[0]<<" removed from warehouse "<<n<<" location "<<i<<" since it had not been ordered for 5 days"<<endl;
+						if(num[n].medloc[i].medium[1] == "0")//delete the item
+								{
+									num[n].medloc[i].medium[0] = "";
+									num[n].medloc[i].medium[1] = "";
+								}//delete the item
+					}
+				}
+				for(int i = 0; i<20; i++){
+					if(num[n].lloc[i].large[2] == "1" || num[n].lloc[i].large[2] == "2" || num[n].lloc[i].large[2] == "3" || num[n].lloc[i].large[2] == "4")
+					{
+						int holde = (atoi(num[n].lloc[i].large[2].c_str()));	
+						holde+=1;
+						to_string(static_cast<long long>(holde));
+						holde=0;
+					}
+					else if(num[n].lloc[i].large[2] == "-1")
+					{
+						num[n].lloc[i].large[2] = "0";
+					}
+					if(num[n].lloc[i].large[2] == "5")
+					{
+						cout<<num[n].lloc[i].large[1]<<" of item "<<num[n].lloc[i].large[0]<<" removed from warehouse "<<n<<" location "<<i<<" since it had not been ordered for 5 days"<<endl;
+						if(num[n].lloc[i].large[1] == "0")//delete the item
+								{
+									num[n].lloc[i].large[0] = "";
+									num[n].lloc[i].large[1] = "";
+								}//delete the item
+					}
+				}
+		}
 		//Disaster/Holiday runs yesterday's files before asking for new ones.
 		if(holidayHasHappened == true)
 		{
