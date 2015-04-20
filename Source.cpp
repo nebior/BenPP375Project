@@ -40,8 +40,7 @@ void placeBackOrder(string fileid, string shipdate, string type, string last, st
 {
 	ofstream BackorderFile;
 	string filename = "BackOrder";
-	cout << "Please enter an ID for the backorder" << endl;
-	cout << "Keep in mind if not unique, will overwrite pre-existing backorders" << endl;
+	MessageBoxA (NULL, "Please enter an ID for the backorder. Keep in mind if not unique, will overwrite pre-existing backorders.", "Enter File Name on Screen", MB_OK);
 	string BackOrderID;
 	cin >> BackOrderID;
 	filename = filename.append(BackOrderID);
@@ -520,7 +519,6 @@ int smalleGivenToCustomer = 0;
 							}
 							else if(numberAlreadyInWarehouse == 0 && numberStillNeeded>0)//If we empty the slot and there are still items needed by the customer
 							{
-								smalleQuantityForInvoice+=smalleGivenToCustomer;
 num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].smalle[1]
 							//		cout<<"Gave "<<smalleGivenToCustomer<<" of the smalle item with ID: "<<num[n].sloc[s].smalle[0]<<" from location "<<s<<" of warehouse "<<n+1<<endl;
 									if(num[n].sloc[s].smalle[1] == "0")//Delete item in that slot if we empty slot
@@ -530,14 +528,11 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								}
 							}
 							else//Items in warehouse = items needed by customer
-							{								
+							{	
+
 							}
 							}
-							if(s == 0 && smalleGivenToCustomer == 0){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
-							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
-								doneFillingOrder = true;
-							}
-							if(s == 0 && smalleGivenToCustomer == 0)
+							if(s == 0 && numberStillNeeded > 0)
 							{
 								//This needs to move to next item in warehouse or check other warehouses or halt for analyst
 							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
@@ -570,10 +565,29 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								//This is where we do backorder.  If we do backorder we need 
 								//to output item price here and then instead of item total
 								// we need to output the word BACKORDERED
-								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+							//	placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+								if(smalleQuantityForInvoice > 0){
 								cout<<smalleQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<smalleQuantityForInvoice;
+								Invoicef<<"          $ "<<temp->itemprice;
+								string itemPriceHolder = temp->itemprice;
+								double priceHolder = smalleQuantityForInvoice * (stod(itemPriceHolder.c_str()));
+								cout<<"      $ "<<priceHolder<<endl;
+								Invoicef<<"      $ "<<priceHolder<<endl;
+								overallSubtotal+=priceHolder;
+								int numberAlreadyInWarehouse = (atoi(num[n].sloc[s].smalle[1].c_str()));
+								num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].smalle[1]
+								cout<<temp->itemid<<"  ";
+								cout<<temp->itemname;
+								Invoicef<<temp->itemid<<"  ";
+								Invoicef<<temp->itemname;
+								}
+
+
+								cout<<numberStillNeeded;
+								cout<<"          $ "<<temp->itemprice;
+								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
 								cout<<"         BACKORDERED"<<endl;
 								Invoicef<<"        BACKORDERED"<<endl;
@@ -649,7 +663,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
 								doneFillingOrder = true;
 							}
-							if(m == 0 && mediumGivenToCustomer == 0)
+							if(m == 0 && numberStillNeeded > 0)
 							{
 								//This needs to move to next item in warehouse or check other warehouses or halt for analyst
 							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
@@ -682,10 +696,30 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								//This is where we do backorder.  If we do backorder we need 
 								//to output item price here and then instead of item total
 								// we need to output the word BACKORDERED
-								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+								//placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+								if(mediumQuantityForInvoice > 0){
 								cout<<mediumQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<mediumQuantityForInvoice;
+								Invoicef<<"          $ "<<temp->itemprice;
+								string itemPriceHolder = temp->itemprice;
+								double priceHolder = mediumQuantityForInvoice * (stod(itemPriceHolder.c_str()));
+								cout<<"      $ "<<priceHolder<<endl;
+								Invoicef<<"      $ "<<priceHolder<<endl;
+								overallSubtotal+=priceHolder;
+								int numberAlreadyInWarehouse = (atoi(num[n].sloc[s].med[1].c_str()));
+								num[n].sloc[s].med[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].med[1]
+								cout<<temp->itemid<<"  ";
+								cout<<temp->itemname;
+								Invoicef<<temp->itemid<<"  ";
+								Invoicef<<temp->itemname;
+								}
+								
+								
+								
+								cout<<numberStillNeeded;
+								cout<<"          $ "<<temp->itemprice;
+								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
 								cout<<"         BACKORDERED"<<endl;
 								Invoicef<<"        BACKORDERED"<<endl;
@@ -755,7 +789,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								
 							}
 							}
-							if(l == 0 && largeGivenToCustomer == 0)
+							if(l == 0 && numberStillNeeded > 0)
 							{
 								//This needs to move to next item in warehouse or check other warehouses or halt for analyst
 							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
@@ -788,10 +822,30 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								//This is where we do backorder.  If we do backorder we need 
 								//to output item price here and then instead of item total
 								// we need to output the word BACKORDERED
-								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+							//	placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+								if(largeQuantityForInvoice > 0){
 								cout<<largeQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<largeQuantityForInvoice;
+								Invoicef<<"          $ "<<temp->itemprice;
+								string itemPriceHolder = temp->itemprice;
+								double priceHolder = largeQuantityForInvoice * (stod(itemPriceHolder.c_str()));
+								cout<<"      $ "<<priceHolder<<endl;
+								Invoicef<<"      $ "<<priceHolder<<endl;
+								overallSubtotal+=priceHolder;
+								int numberAlreadyInWarehouse = (atoi(num[n].sloc[s].med[1].c_str()));
+								num[n].sloc[s].med[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].med[1]
+								cout<<temp->itemid<<"  ";
+								cout<<temp->itemname;
+								Invoicef<<temp->itemid<<"  ";
+								Invoicef<<temp->itemname;
+								}
+								
+								
+								
+								cout<<numberStillNeeded;
+								cout<<"          $ "<<temp->itemprice;
+								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
 								cout<<"         BACKORDERED"<<endl;
 								Invoicef<<"        BACKORDERED"<<endl;
@@ -1140,13 +1194,13 @@ dayForDisaster += disasterRand;
 		//Disaster/Holiday runs yesterday's files before asking for new ones.
 		if(holidayHasHappened == true)
 		{
-		MessageBox (NULL, "Yesterday's files are being processed before we ask you for today's files.", "The Holiday is Over!", MB_OK);
+		MessageBoxA (NULL, "Yesterday's files are being processed before we ask you for today's files.", "The Holiday is Over!", MB_OK);
 		vendor(num);
 		customer(num);
 		holidayHasHappened = false;
 		}
 		if(disasterHasHappened == true){
-		MessageBox (NULL, "Yesterday's files are being processed before we ask you for today's files.", "The Disaster's Damage has been Undone!", MB_OK);
+		MessageBoxA (NULL, "Yesterday's files are being processed before we ask you for today's files.", "The Disaster's Damage has been Undone!", MB_OK);
 		vendor(num);
 		customer(num);
 		disasterHasHappened = false;
@@ -1180,32 +1234,32 @@ dayForDisaster += disasterRand;
 			disasterPick = rand() % 6 + 1;//6 possible disasters
 			if(disasterPick == 1)
 			{
-				MessageBox (NULL, "The warehouses all caught on fire simultaneously! They will be rebuilt and properly stocked by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
+				MessageBoxA (NULL, "The warehouses all caught on fire simultaneously! They will be rebuilt and properly stocked by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
 				disasterHasHappened = true;
 			}
 			if(disasterPick == 2)
 			{
-				MessageBox (NULL, "A flood destroyed all of the warehouses! They will be rebuilt and properly stocked by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
+				MessageBoxA (NULL, "A flood destroyed all of the warehouses! They will be rebuilt and properly stocked by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
 				disasterHasHappened = true;
 			}
 			if(disasterPick == 3)
 			{
-				MessageBox (NULL, "Hail the size of mini vans has torn asunder all warehouses! They will be rebuilt and properly stocked by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
+				MessageBoxA (NULL, "Hail the size of mini vans has torn asunder all warehouses! They will be rebuilt and properly stocked by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
 				disasterHasHappened = true;
 			}
 			if(disasterPick == 4)
 			{
-				MessageBox (NULL, "A snow storm has buried the warehouses and nobody can find them! They will be found by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
+				MessageBoxA (NULL, "A snow storm has buried the warehouses and nobody can find them! They will be found by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
 				disasterHasHappened = true;
 			}
 			if(disasterPick == 5)
 			{
-				MessageBox (NULL, "A tornado has carried away the warehouses! They will be returned to their proper place by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
+				MessageBoxA (NULL, "A tornado has carried away the warehouses! They will be returned to their proper place by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
 				disasterHasHappened = true;
 			}
 			if(disasterPick == 6)
 			{
-				MessageBox (NULL, "An earthquake has all of the warehouses stuck in the ground! They will be dug up by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
+				MessageBoxA (NULL, "An earthquake has all of the warehouses stuck in the ground! They will be dug up by tomorrow and will run these shipments.", "Disaster has Struck the Warehouses!", MB_OK);
 				disasterHasHappened = true;
 			}
 		}
@@ -1214,32 +1268,32 @@ dayForDisaster += disasterRand;
 			holidayPick = rand() % 6 + 1;//6 possible disasters
 			if(holidayPick == 1)
 			{
-				MessageBox (NULL, "National Truck Driver Day! The workers will be back tomorrow and will run these shipments.", "Today is a Holiday!", MB_OK);
+				MessageBoxA (NULL, "National Truck Driver Day! The workers will be back tomorrow and will run these shipments.", "Today is a Holiday!", MB_OK);
 				holidayHasHappened = true;
 			}
 			if(holidayPick == 2)
 			{
-				MessageBox (NULL, "National Warehouse Worker Day! The workers will be back tomorrow and will run these shipments.", "Today is a Holiday!", MB_OK);
+				MessageBoxA (NULL, "National Warehouse Worker Day! The workers will be back tomorrow and will run these shipments.", "Today is a Holiday!", MB_OK);
 				holidayHasHappened = true;
 			}
 			if(holidayPick == 3)
 			{
-				MessageBox (NULL, "National Warehouse Day! The warehouses will be back from vacation tomorrow and will run these shipments.", "Today is a Holiday!", MB_OK);
+				MessageBoxA (NULL, "National Warehouse Day! The warehouses will be back from vacation tomorrow and will run these shipments.", "Today is a Holiday!", MB_OK);
 				holidayHasHappened = true;
 			}
 			if(holidayPick == 4)
 			{
-				MessageBox (NULL, "National Vendor and Customer Day! The Vendors and Customers will be back tomorrow and we will run these shipments.", "Today is a Holiday!", MB_OK);
+				MessageBoxA (NULL, "National Vendor and Customer Day! The Vendors and Customers will be back tomorrow and we will run these shipments.", "Today is a Holiday!", MB_OK);
 				holidayHasHappened = true;
 			}
 			if(holidayPick == 5)
 			{
-				MessageBox (NULL, "National Shipments Day! The packages from today will show up or be sent out tomorrow.", "Today is a Holiday!", MB_OK);
+				MessageBoxA (NULL, "National Shipments Day! The packages from today will show up or be sent out tomorrow.", "Today is a Holiday!", MB_OK);
 				holidayHasHappened = true;
 			}
 			if(holidayPick == 6)
 			{
-				MessageBox (NULL, "National Sleeping Day! Everyone will be awake tomorrow and we will run these shipments.", "Today is a Holiday!", MB_OK);
+				MessageBoxA (NULL, "National Sleeping Day! Everyone will be awake tomorrow and we will run these shipments.", "Today is a Holiday!", MB_OK);
 				holidayHasHappened = true;
 			}
 		}
