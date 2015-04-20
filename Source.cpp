@@ -4,13 +4,12 @@
 //
 //  Created by Programing Programing Prodigies on 4/8/15.
 //  Copyright (c) 2015 Programing Prodigies. All rights reserved.
-//  Latest Change 4/20/15 12:00 AM 4/19/2015
+//  Latest Change 4/19/15 11:46pm 4/19/2015
 //
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <Windows.h>
-#include <sstream>
 using namespace std;
 ifstream File, Vendor, Customer; //Three file initializations.
 string itemtotal; //Total number of items in Catalogue string form.
@@ -113,16 +112,13 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 	getline(Vendor, input);  //First line with File ID and date receieved.
 	fileid = input.substr(1, 4);
 	today = input.substr(6, 8); 
-	//cout << "File #" << fileid << "  Shipment recieved on: " << today.substr(0, 2) << "-" << today.substr(2, 2) << "-" << today.substr(4, 4) << endl << endl;
 	while (!Vendor.eof())  //Ticks once for every vendor.
 	{
 		getline(Vendor, input);  //Gets vendor info and amount of items.
 		if (input.size()>13)  //If not last line of file, continue.
 		{
 			comp = input.substr(0, 50); shipped = input.substr(50, 10); sentnum = input.substr(60, 1);
-			//cout <<endl<< "Shipment from: " << comp << endl << "Sent on: " << shipped << endl << "Number of items: " << sentnum << endl;
-			int i = atoi(sentnum.c_str());  //Gets number of items from vendor in int form.
-		
+			int i = atoi(sentnum.c_str());  //Gets number of items from vendor in int form.		
 			for (int j = i; j>0; j--)
 			{
 				getline(Vendor, input);
@@ -136,7 +132,6 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 				int numberFromForm = (atoi(count.c_str()));
 				if (check(item, head, total) != true)
 				{
-					//cout << "Item " << item << " is not in the catalogue, will not store item." << endl;
 				}
 				else
 				{
@@ -184,14 +179,12 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 							{
 								doneStoring = true;//We have stored every item from the vendor form
 								num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].smalle[1]
-							//cout<<"Stored "<<tempFromForm<<" of the smalle item with ID: "<<num[n].sloc[s].smalle[0]<<" in location "<<s<<" of warehouse "<<n+1<<endl;					
-							}
+						}
 							if(numberAlreadyInWarehouse == 250 && numberFromForm>0)//If we filled the slot and there are still items remaining to be added
 							{
 								num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].smalle[1]
-						//	cout<<"Stored "<<num[n].sloc[s].smalle[1]<<" of the smalle item with ID: "<<num[n].sloc[s].smalle[0]<<" in location "<<s<<" of warehouse "<<n+1<<endl;
-							if(s == 19){
-								//cout<<"There was not enough room in warehouse "<< n+1 << " to store the " <<numberFromForm<< " items with ID " <<item<<endl;
+						if(s == 19){
+								cout<<"There was not enough room in warehouse "<< n+1 << " to store the " <<numberFromForm<< " items with ID " <<item<<endl;
 							}
 							}
 							else//item perfectly fills slot
@@ -219,8 +212,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 						{
 							num[n].sloc[r].smalle[0] = item;//Put item ID in first empty slot
 							break;
-						}
-						
+						}						
 						}
 										
 							}
@@ -242,8 +234,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 								tempFromForm = to_string(static_cast<long long>(numberFromForm));
 								int numberAlreadyInWarehouse = (atoi(num[n].medloc[m].medium[1].c_str()));
 							while(numberFromForm>0 && numberAlreadyInWarehouse < 100)//While there are some to be added from the form and still room in the slot
-							{
-								
+							{								
 								numberFromForm--;//Remove one from number to be added to warehouse
 								numberAlreadyInWarehouse++;//Add one to number in warehouse
 							}
@@ -251,14 +242,12 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 							{
 								doneStoring = true;//We have stored every item from the vendor form
 								num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].medium[1]
-							//cout<<"Stored "<<tempFromForm<<" of the medium item with ID: "<<num[n].medloc[m].medium[0]<<" in location "<<m<<" of warehouse "<<n+1<<endl;					
-							}
+						}
 							if(numberAlreadyInWarehouse == 100 && numberFromForm>0)//If we filled the slot and there are still items remaining to be added
 							{
 								num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].medium[1]
-							//cout<<"Stored "<<num[n].medloc[m].medium[1]<<" of the medium item with ID: "<<num[n].medloc[m].medium[0]<<" in location "<<m<<" of warehouse "<<n+1<<endl;
 							if(m == 19){
-								//cout<<"There was not enough room in warehouse "<< n+1 << " to store the " <<numberFromForm<< " items with ID " <<item<<endl;
+								cout<<"There was not enough room in warehouse "<< n+1 << " to store the " <<numberFromForm<< " items with ID " <<item<<endl;
 							}
 							}
 							else//item perfectly fills slot
@@ -286,8 +275,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 						{
 							num[n].medloc[r].medium[0] = item;//Put item ID in first empty slot
 							break;
-						}
-						
+						}						
 						}				
 							}
 							m++;
@@ -308,8 +296,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 								tempFromForm = to_string(static_cast<long long>(numberFromForm));
 								int numberAlreadyInWarehouse = (atoi(num[n].lloc[l].large[1].c_str()));
 							while(numberFromForm>0 && numberAlreadyInWarehouse < 10)//While there are some to be added from the form and still room in the slot
-							{
-								
+							{							
 								numberFromForm--;//Remove one from number to be added to warehouse
 								numberAlreadyInWarehouse++;//Add one to number in warehouse
 							}
@@ -317,14 +304,12 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 							{
 								doneStoring = true;//We have stored every item from the vendor form
 								num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].large[1]
-							//cout<<"Stored "<<tempFromForm<<" of the large item with ID: "<<num[n].lloc[l].large[0]<<" in location "<<l<<" of warehouse "<<n+1<<endl;					
 							}
 							if(numberAlreadyInWarehouse == 10 && numberFromForm>0)//If we filled the slot and there are still items remaining to be added
 							{							
 								num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].large[1]
-							//cout<<"Stored "<<num[n].lloc[l].large[1]<<" of the large item with ID: "<<num[n].lloc[l].large[0]<<" in location "<<l<<" of warehouse "<<n+1<<endl;
 							if(l == 19){
-								//cout<<"There was not enough room in warehouse "<< n+1 << " to store the " <<numberFromForm<< " items with ID " <<item<<endl;
+								cout<<"There was not enough room in warehouse "<< n+1 << " to store the " <<numberFromForm<< " items with ID " <<item<<endl;
 							}
 							}
 							else//item perfectly fills slot
@@ -347,8 +332,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 								l = r;
 								l--;
 								break;
-							}
-						
+							}					
 						}											
 							}
 							l++;
@@ -359,25 +343,6 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 		}//if >13
 		else
 		{
-		/*	lineitems = input.substr(3, 1); numven = input.substr(1, 1);
-			cout << "Total number of vendors: " << numven << endl << "Total number of line items: " << lineitems << endl<< endl;
-	system("pause");
-			for(int n = 0; n<3; n++){//Outputs the contents of all 3 warehouses, screen too smalle to get first 3 smalle slots.
-		cout<<"Warehouse "<<n+1<<endl;
-				for(int i = 0; i<20; i++){
-					cout<<"smalle "<<i<<" ID: "<<num[n].sloc[i].smalle[0]<<" Count: "<<num[n].sloc[i].smalle[1]<<endl;
-				}
-		//		system("pause");
-				for(int i = 0; i<60; i++){
-					cout<<"Medium "<<i<<" ID: "<<num[n].medloc[i].medium[0]<<" Count: "<<num[n].medloc[i].medium[1]<<endl;
-				}
-				for(int i = 0; i<20; i++){
-					cout<<"Large "<<i<<" ID: "<<num[n].lloc[i].large[0]<<" Count: "<<num[n].lloc[i].large[1]<<endl;
-				}
-				if(n == 2){
-					//system("pause");
-				}
-			}*/
 		}
 	}
 }
@@ -394,7 +359,6 @@ void customer(warehouse num[3])
 	getline(Customer, input);
 	fileid = input.substr(1, 4);
 	shipdate = input.substr(6, 8); 
-	//cout <<endl<< "File #" << fileid << "  Shipping Date: " << shipdate.substr(0, 4) << "-" << shipdate.substr(4, 2) << "-" << shipdate.substr(6, 2) << endl << endl;
 	while (!Customer.eof()) 
 	{
 		getline(Customer, input);//Type,Last,First
@@ -510,9 +474,7 @@ int smalleGivenToCustomer = 0;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
 								num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].smalle[1]
-								
-						//	cout<<"Gave "<<smalleGivenToCustomer<<" of the smalle item with ID: "<<num[n].sloc[s].smalle[0]<<" from location "<<s<<" of warehouse "<<n+1<<endl;
-		if(num[n].sloc[s].smalle[1] == "0")//Delete item in that slot if we empty slot
+							if(num[n].sloc[s].smalle[1] == "0")//Delete item in that slot if we empty slot
 								{
 									num[n].sloc[s].smalle[0] = "";
 									num[n].sloc[s].smalle[1] = "";
@@ -521,8 +483,7 @@ int smalleGivenToCustomer = 0;
 							else if(numberAlreadyInWarehouse == 0 && numberStillNeeded>0)//If we empty the slot and there are still items needed by the customer
 							{
 num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[i].smalle[1]
-							//		cout<<"Gave "<<smalleGivenToCustomer<<" of the smalle item with ID: "<<num[n].sloc[s].smalle[0]<<" from location "<<s<<" of warehouse "<<n+1<<endl;
-									if(num[n].sloc[s].smalle[1] == "0")//Delete item in that slot if we empty slot
+								if(num[n].sloc[s].smalle[1] == "0")//Delete item in that slot if we empty slot
 								{
 									num[n].sloc[s].smalle[0] = "";
 									num[n].sloc[s].smalle[1] = "";
@@ -530,14 +491,11 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 							}
 							else//Items in warehouse = items needed by customer
 							{	
-
 							}
 							}
 							if(s == 0 && numberStillNeeded > 0)
 							{
-								//This needs to move to next item in warehouse or check other warehouses or halt for analyst
-							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
-								
+							//This needs to move to next item in warehouse or check other warehouses or halt for analyst
 							//Check another Warehouse
 							warehousesChecked[n] = true;//set the warehouse we just checked as checked
 							if(warehousesChecked[0]== false)//if we haven't checked warehouse 1, check it
@@ -562,11 +520,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								warehousesChecked[0]= false;
 								warehousesChecked[1]= false;
 								warehousesChecked[2]= false;
-								doneFillingOrder = true;
-								//This is where we do backorder.  If we do backorder we need 
-								//to output item price here and then instead of item total
-								// we need to output the word BACKORDERED
-							   
+								doneFillingOrder = true;						   
 								if(smalleQuantityForInvoice > 0){
 								cout<<smalleQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
@@ -584,7 +538,6 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
 								}
-
 								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
 								cout<<numberStillNeeded;
 								cout<<"          $ "<<temp->itemprice;
@@ -592,8 +545,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								Invoicef<<"          $ "<<temp->itemprice;
 								cout<<"    BACKORDERED"<<endl;
 								Invoicef<<"   BACKORDERED"<<endl;
-							}					
-						
+							}											
 							}
 							s--;
 						}
@@ -625,8 +577,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 							if(numberStillNeeded == 0)//If we gave the customer everything they ordered
 							{
 								doneFillingOrder = true;//We have given the customer all we have
-								//Invoice Output Below
-								
+								//Invoice Output Below							
 								cout<<mediumQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<mediumQuantityForInvoice;
@@ -636,9 +587,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<"      $ "<<priceHolder<<endl;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
-	num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].medium[1]
-								
-							//cout<<"Gave "<<mediumGivenToCustomer<<" of the medium item with ID: "<<num[n].medloc[m].medium[0]<<" from location "<<m<<" of warehouse "<<n+1<<endl;
+	num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].medium[1]								
 						if(num[n].medloc[m].medium[1] == "0")//Delete item in that slot if we empty slot
 								{
 									num[n].medloc[m].medium[0] = "";
@@ -656,8 +605,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								}
 							}
 							else//Items in warehouse = items needed by customer
-							{
-								
+							{								
 							}
 							}
 							if(m == 0 && mediumGivenToCustomer == 0){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
@@ -694,10 +642,6 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								warehousesChecked[1]= false;
 								warehousesChecked[2]= false;
 								doneFillingOrder = true;
-								//This is where we do backorder.  If we do backorder we need 
-								//to output item price here and then instead of item total
-								// we need to output the word BACKORDERED
-	
 								if(mediumQuantityForInvoice > 0){
 								cout<<mediumQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
@@ -714,9 +658,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<temp->itemname;
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
-								}
-								
-								
+								}		
 								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
 								cout<<numberStillNeeded;
 								cout<<"          $ "<<temp->itemprice;
@@ -725,7 +667,6 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<"    BACKORDERED"<<endl;
 								Invoicef<<"   BACKORDERED"<<endl;
 							}					
-						
 							}
 							m--;
 						}
@@ -768,7 +709,6 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
 									num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].large[1]
-						//	cout<<"Gave "<<largeGivenToCustomer<<" of the Large item with ID: "<<num[n].lloc[l].large[0]<<" from location "<<l<<" of warehouse "<<n+1<<endl;
 						if(num[n].lloc[l].large[1] == "0")//Delete item in that slot if we empty slot
 								{
 									num[n].lloc[l].large[0] = "";
@@ -778,23 +718,18 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 							else if(numberAlreadyInWarehouse == 0 && numberStillNeeded>0)//If we empty the slot and there are still items needed by the customer
 							{
 								num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].lloc[i].large[1]
-							//		cout<<"Gave "<<largeGivenToCustomer<<" of the Large item with ID: "<<num[n].lloc[l].large[0]<<" from location "<<l<<" of warehouse "<<n+1<<endl;
-									if(num[n].lloc[l].large[1] == "0")//Delete item in that slot if we empty slot
+							if(num[n].lloc[l].large[1] == "0")//Delete item in that slot if we empty slot
 								{
 									num[n].lloc[l].large[0] = "";
 									num[n].lloc[l].large[1] = "";
 								}
 							}
 							else//Items in warehouse = items needed by customer
-							{
-								
+							{		
 							}
 							}
 							if(l == 0 && numberStillNeeded > 0)
-							{
-								//This needs to move to next item in warehouse or check other warehouses or halt for analyst
-							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
-								
+							{						
 							//Check another Warehouse
 							warehousesChecked[n] = true;//set the warehouse we just checked as checked
 							if(warehousesChecked[0]== false)//if we haven't checked warehouse 1, check it
@@ -820,10 +755,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								warehousesChecked[1]= false;
 								warehousesChecked[2]= false;
 								doneFillingOrder = true;
-								//This is where we do backorder.  If we do backorder we need 
-								//to output item price here and then instead of item total
-								// we need to output the word BACKORDERED
-						        placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
 								if(largeQuantityForInvoice > 0){
 								cout<<largeQuantityForInvoice;
 								cout<<"          $ "<<temp->itemprice;
@@ -849,7 +781,6 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<"    BACKORDERED"<<endl;
 								Invoicef<<"   BACKORDERED"<<endl;
 							}					
-					
 							}
 								
 						l--;	
@@ -875,36 +806,9 @@ if(j == 1){
 			Invoicef<<"Amount Due in "<<payment<<"\t\t\t\t\t\t"<<discountedPrice   +((overallSubtotal * ((stod(discount.c_str()))/100)) * .06)<<endl;
 		  }
 }//for loop end
-
-
-			
-
-
-
 		}//if >13 close
 		else
-		{
-			//Invoicef.close();
-			/*lineitems = input.substr(3, 1); customers = input.substr(1, 1);
-			cout << "Total number of customers: " << customers << endl << "Total number of line items: " << lineitems << endl<< endl;	
-			system("pause");
-				for(int n = 0; n<3; n++){//Outputs the contents of all 3 warehouses, screen too smalle to get first 3 smalle slots.
-		cout<<"Warehouse "<<n+1<<endl;
-				for(int i = 0; i<20; i++){
-					cout<<"smalle "<<i<<" ID: "<<num[n].sloc[i].smalle[0]<<" Count: "<<num[n].sloc[i].smalle[1]<<endl;
-				}
-				//system("pause");
-				for(int i = 0; i<60; i++){
-					cout<<"Medium "<<i<<" ID: "<<num[n].medloc[i].medium[0]<<" Count: "<<num[n].medloc[i].medium[1]<<endl;
-				}
-				for(int i = 0; i<20; i++){
-					cout<<"Large "<<i<<" ID: "<<num[n].lloc[i].large[0]<<" Count: "<<num[n].lloc[i].large[1]<<endl;
-				}
-				if(n == 2){
-					//system("pause");
-				}
-				
-			}*/
+		{			
 		}
 	}			
 }
@@ -918,178 +822,36 @@ void search(warehouse num[3], string itemID)
 						cout << "Found at warehouse " << n + 1 << " location " << i << " in quantity " << num[n].sloc[i].smalle[1] << endl;
 					}
 				}
-
 				for(int i = 0; i<60; i++){
 					if(num[n].medloc[i].medium[0] == itemID)
 					{
 						cout << "Found at warehouse " << n + 1<< " location " << i << " in quantity " << num[n].medloc[i].medium[1] << endl;
 					}
-
 				}
 				for(int i = 0; i<20; i++){
 
 					if(num[n].lloc[i].large[0] == itemID)
 					{
 						cout << "Found at warehouse " << n + 1<< " location " << i << " in quantity " << num[n].lloc[i].large[1] << endl;
-					}
-					
+					}					
 				}
-
 			}
 }
-void saveProgress(warehouse num[3], int dayCount)
+void saveProgress(warehouse num[3])
 {
 	ofstream save("Progress.sav"); //Creates the save file for what is stored in warehouse
-	save << "Days: " << dayCount << endl;
 	for (int n = 0; n < 3; n++) //Writes what is in the warehouse.
 	{
 		save << "Warehouse " << n + 1 << endl;
 		for (int i = 0; i < 20; i++){
 			save << "smalle " << i << " ID: " << num[n].sloc[i].smalle[0] << " Count: " << num[n].sloc[i].smalle[1] << endl;
-
 		}
 		for (int i = 0; i < 60; i++){
 			save << "Medium " << i << " ID: " << num[n].medloc[i].medium[0] << " Count: " << num[n].medloc[i].medium[1] << endl;
-
 		}
 		for (int i = 0; i < 20; i++){
 			save << "Large " << i << " ID: " << num[n].lloc[i].large[0] << " Count: " << num[n].lloc[i].large[1] << endl;
-
 		}
-	}
-}
-
-void loadProgress(warehouse num[3], int dayCount)
-{
-	string line;
-	int size;
-	string token[10];
-	int n = 0;
-	int a = 1;
-	int k = 0;
-	int h = 0;
-	ifstream load("Progress.sav"); //Load the progress from previous save
-	if (load.is_open())
-	{
-		while (!load.eof())
-		{
-			istringstream jkr;
-			getline(load, line);
-			jkr.str(line);
-
-			for (int d = 0; d < 6; d++) //Breaking the line in file into parts to read list
-			{
-				jkr >> token[d];
-			}
-
-			if (n == 0) //Reading in the number of days
-			{
-				size = atoi(token[1].c_str());
-				dayCount = size;
-				n++;
-			}
-			else if (n == 1) //Ignore Line
-			{
-				n++;
-			}
-
-			else if (n >= 2)
-			{
-				if (k < 3) //Warehouse Number
-				{
-					if (n >= 2 && n <= 20)
-					{
-						if (token[3] != "Count:") //Reading all small items
-						{
-							num[k].sloc[h].smalle[0] = token[3];
-							num[k].sloc[h].smalle[1] = token[5];
-						}
-						n++;
-						h++;
-					}
-					else if (n == 21) //Switch to reading medium items
-					{
-						if (token[3] != "Count:")
-						{
-							num[k].sloc[h].smalle[0] = token[3];
-							num[k].sloc[h].smalle[1] = token[5];
-						}
-						n++;
-						h = 0;
-					}
-					else if (n >= 22 && n <= 80) //Reading all medium size items
-					{
-						if (token[3] != "Count:")
-						{
-							num[k].medloc[h].medium[0] = token[3];
-							num[k].medloc[h].medium[1] = token[5];
-						}
-						n++;
-						h++;
-					}
-					else if (n == 81) //Switch to reading large items
-					{
-						if (token[3] != "Count:")
-						{
-							num[k].medloc[h].medium[0] = token[3];
-							num[k].medloc[h].medium[1] = token[5];
-						}
-						n++;
-						h = 0;
-					}
-					else if (n >= 82 && n <= 100) //Reading all large items in warehouse
-					{
-						if (token[3] != "Count:")
-						{
-							num[k].lloc[h].large[0] = token[3];
-							num[k].lloc[h].large[1] = token[5];
-						}
-						n++;
-						h++;
-					}
-					else if (n == 101)
-					{
-						if (token[3] != "Count:") //Switch to reading small items in next warehouse
-						{
-							num[k].lloc[h].large[0] = token[3];
-							num[k].lloc[h].large[1] = token[5];
-						}
-						n = 1;
-						h = 0;
-						k++;
-					}
-				}
-			}
-
-		}
-		for (int n = 0; n < 3; n++) //Writes what is in the warehouse(test)
-		{
-			cout << "Warehouse " << n + 1 << endl;
-			for (int i = 0; i < 20; i++){
-				cout << "Small " << i << " ID: " << num[n].sloc[i].smalle[0] << " Count: " << num[n].sloc[i].smalle[1] << endl;
-
-
-			}
-			system("pause");
-			for (int i = 0; i < 60; i++)
-			{
-				cout << "Medium " << i << " ID: " << num[n].medloc[i].medium[0] << " Count: " << num[n].medloc[i].medium[1] << endl;
-
-			}
-			for (int i = 0; i < 20; i++)
-			{
-				cout << "Large " << i << " ID: " << num[n].lloc[i].large[0] << " Count: " << num[n].lloc[i].large[1] << endl;
-
-			}
-		}
-
-		cout << "Previous save is loaded." << endl;
-		load.close();
-	}
-
-	else
-	{
-		cout << "Save file is not found." << endl;
 	}
 }
 int main()
@@ -1123,8 +885,6 @@ dayForDisaster += disasterRand;
 	{
 		dayForHoliday+=2;
 	}
-
-
 	string cataFile;
 	string lookupId;
 	cout<<"Enter name of Catalogue File "<<endl;
@@ -1142,7 +902,6 @@ dayForDisaster += disasterRand;
 	head = new list;
 	int dayCount = 1;
 	setuplist(head);
-	loadProgress(num, dayCount);
 	cout<<"Catalogue Created"<<endl;
 		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
 		while(true)
@@ -1166,10 +925,6 @@ dayForDisaster += disasterRand;
 		cout<<endl<<"Please select and action below "<<endl;
 		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4. Abort without saving "<<endl;
 	cin>>userInput;
-	
-	
-	
-	
 	dayCount++;	
 	if(holidayHasHappened == true)
 	{
@@ -1187,9 +942,6 @@ dayForDisaster += disasterRand;
 	{
 		dayForDisaster++;
 	}
-
-
-
 	//Menu
 	if(userInput == '1')//Next Day
 	{
@@ -1207,8 +959,6 @@ dayForDisaster += disasterRand;
 		customer(num);
 		disasterHasHappened = false;
 		}
-
-
 		remove( "Invoice.txt" );
 		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
 		cin.ignore();
@@ -1313,7 +1063,7 @@ dayForDisaster += disasterRand;
 	}
 	else if(userInput== '3')//Save and Quit
 	{
-		saveProgress(num, dayCount);
+		saveProgress(num);
 		cout << "Items and progress has been saved." << endl;
 		system("pause");
 		return 0;
