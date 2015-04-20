@@ -1125,32 +1125,6 @@ dayForDisaster += disasterRand;
         cout << "Invalid file name. Please enter a valid Vendor file name: ";
     }
 		vendor(num);				
-		backOrderFunctionFinished = false; 
-		cout << "Is there a backorder you wish to fulfill?" << endl;
-		while (backOrderFunctionFinished == false) // Checks to see if the user has entered in y/n
-		{
-			cin >> isBackorder;
-			if(isBackorder == 'y')
-			{
-				cin.ignore();
-				cout << "Please enter the file name for the backOrder." << endl;
-				while(true)
-				{
-				Customer.close();
-				Customer.clear();
-				getline(cin,custFile);
-				Customer.open(custFile.c_str());
-				if(Customer) break;
-				cout << "Invalid file name. Please enter a valid Backorder file name: " << endl;
-				}
-				customer(num);
-				backOrderFunctionFinished = true;
-			}
-			else if(isBackorder == 'n')
-			{
-			backOrderFunctionFinished = true;
-			}
-		}
 		cout<<"Enter name of Customer File For Day "<< dayCount<<". "<<endl;
 		while(true)
 		{
@@ -1305,6 +1279,30 @@ dayForDisaster += disasterRand;
 				
 		backOrderFunctionFinished = false; 
 		cout << "Is there a backorder you wish to fulfill?" << endl;
+		while (backOrderFunctionFinished == false) // Checks to see if the user has entered in y/n
+		{
+			cin >> isBackorder;
+			if(isBackorder == 'y')
+			{
+				cin.ignore();
+				cout << "Please enter the file name for the backOrder." << endl;
+				while(true)
+				{
+				Customer.close();
+				Customer.clear();
+				getline(cin,custFile);
+				Customer.open(custFile.c_str());
+				if(Customer) break;
+				cout << "Invalid file name. Please enter a valid Backorder file name: " << endl;
+				}
+				customer(num);
+				backOrderFunctionFinished = true;
+			}
+			else if(isBackorder == 'n')
+			{
+			backOrderFunctionFinished = true;
+			}
+		}
 		customer(num);
 		disasterHasHappened = false;
 		cout<<"This pause is so you can view the information processed after the disaster/holiday"<<endl;
