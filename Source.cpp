@@ -519,6 +519,39 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
 								doneFillingOrder = true;
 							}
+							if(s == 0 && smallGivenToCustomer == 0)
+							{
+								//This needs to move to next item in warehouse or check other warehouses or halt for analyst
+							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
+								
+							//Check another Warehouse
+							warehousesChecked[n] = true;//set the warehouse we just checked as checked
+							if(warehousesChecked[0]== false)//if we haven't checked warehouse 1, check it
+							{
+								n = 0;
+								s = 20;
+							}
+							else if(warehousesChecked[1]==false && warehousesChecked[0] == true)//if we haven't checked warehouse 2, check it
+							{
+								n = 1;
+								s = 20;
+							}
+							else if(warehousesChecked[2]==false && warehousesChecked[0] == true && warehousesChecked[1] == true)//if we haven't checked warehouse 3, check it
+							{
+								n = 2;
+								s = 20;
+							}
+							else
+							{
+								//Tell analyst all warehouses are full
+								//Set all warehouses to unchecked
+								warehousesChecked[0]= false;
+								warehousesChecked[1]= false;
+								warehousesChecked[2]= false;
+								doneFillingOrder = true;
+							}					
+						
+							}
 							s--;
 						}
 					}
@@ -588,6 +621,39 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
 								doneFillingOrder = true;
 							}
+							if(m == 0 && mediumGivenToCustomer == 0)
+							{
+								//This needs to move to next item in warehouse or check other warehouses or halt for analyst
+							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
+								
+							//Check another Warehouse
+							warehousesChecked[n] = true;//set the warehouse we just checked as checked
+							if(warehousesChecked[0]== false)//if we haven't checked warehouse 1, check it
+							{
+								n = 0;
+								m = 20;
+							}
+							else if(warehousesChecked[1]==false && warehousesChecked[0] == true)//if we haven't checked warehouse 2, check it
+							{
+								n = 1;
+								m = 20;
+							}
+							else if(warehousesChecked[2]==false && warehousesChecked[0] == true && warehousesChecked[1] == true)//if we haven't checked warehouse 3, check it
+							{
+								n = 2;
+								m = 20;
+							}
+							else
+							{
+								//Tell analyst all warehouses are full
+								//Set all warehouses to unchecked
+								warehousesChecked[0]= false;
+								warehousesChecked[1]= false;
+								warehousesChecked[2]= false;
+								doneFillingOrder = true;
+							}					
+						
+							}
 							m--;
 						}
 					}
@@ -651,7 +717,9 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								
 							}
 							}
-							if(l == 0 && largeGivenToCustomer == 0){//This needs to move to next item in warehouse or check other warehouses or halt for analyst
+							if(l == 0 && largeGivenToCustomer == 0)
+							{
+								//This needs to move to next item in warehouse or check other warehouses or halt for analyst
 							//	cout<<"None of item "<<item<<" is in warehouse " << n+1<<endl;
 								
 							//Check another Warehouse
@@ -659,17 +727,17 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 							if(warehousesChecked[0]== false)//if we haven't checked warehouse 1, check it
 							{
 								n = 0;
-								l = 19;
+								l = 20;
 							}
-							else if(warehousesChecked[1]==false)//if we haven't checked warehouse 2, check it
+							else if(warehousesChecked[1]==false && warehousesChecked[0] == true)//if we haven't checked warehouse 2, check it
 							{
 								n = 1;
-								l = 19;
+								l = 20;
 							}
-							else if(warehousesChecked[2]==false)//if we haven't checked warehouse 3, check it
+							else if(warehousesChecked[2]==false && warehousesChecked[0] == true && warehousesChecked[1] == true)//if we haven't checked warehouse 3, check it
 							{
 								n = 2;
-								l = 19;
+								l = 20;
 							}
 							else
 							{
@@ -678,11 +746,14 @@ num[n].sloc[s].small[1]=to_string(static_cast<long long>(numberAlreadyInWarehous
 								warehousesChecked[0]= false;
 								warehousesChecked[1]= false;
 								warehousesChecked[2]= false;
-							}					
-						}
 								doneFillingOrder = true;
+							}					
+						
 							}
-							l--;
+								
+						l--;	
+						}
+							
 						
 					}//end Large
 }	
