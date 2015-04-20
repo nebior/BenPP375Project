@@ -10,6 +10,7 @@
 #include <string>
 #include <fstream>
 #include <Windows.h>
+#include <sstream>
 using namespace std;
 ifstream File, Vendor, Customer; //Three file initializations.
 string itemtotal; //Total number of items in Catalogue string form.
@@ -589,8 +590,8 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
-								cout<<"    BACKORDERED"<<endl;
-								Invoicef<<"   BACKORDERED"<<endl;
+								cout<<"         BACKORDERED"<<endl;
+								Invoicef<<"        BACKORDERED"<<endl;
 							}					
 						
 							}
@@ -707,8 +708,8 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<"      $ "<<priceHolder<<endl;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
-								int numberAlreadyInWarehouse = (atoi(num[n].medloc[m].medium[1].c_str()));
-								num[n].medloc[m].medium[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].med[1]
+								int numberAlreadyInWarehouse = (atoi(num[n].sloc[s].med[1].c_str()));
+								num[n].sloc[s].med[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].med[1]
 								cout<<temp->itemid<<"  ";
 								cout<<temp->itemname;
 								Invoicef<<temp->itemid<<"  ";
@@ -721,8 +722,8 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
-								cout<<"    BACKORDERED"<<endl;
-								Invoicef<<"   BACKORDERED"<<endl;
+								cout<<"         BACKORDERED"<<endl;
+								Invoicef<<"        BACKORDERED"<<endl;
 							}					
 						
 							}
@@ -833,26 +834,35 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								cout<<"      $ "<<priceHolder<<endl;
 								Invoicef<<"      $ "<<priceHolder<<endl;
 								overallSubtotal+=priceHolder;
-								int numberAlreadyInWarehouse = (atoi(num[n].lloc[l].large[1].c_str()));
-								num[n].lloc[l].large[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].med[1]
+								int numberAlreadyInWarehouse = (atoi(num[n].sloc[s].med[1].c_str()));
+								num[n].sloc[s].med[1]=to_string(static_cast<long long>(numberAlreadyInWarehouse));//Convert numberAlreadyInWarehouse back into a string to be stored in num[n].sloc[s].med[1]
 								cout<<temp->itemid<<"  ";
 								cout<<temp->itemname;
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
+<<<<<<< HEAD
 								}	
 								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
+=======
+								}
+								
+								
+								
+>>>>>>> origin/master
 								cout<<numberStillNeeded;
 								cout<<"          $ "<<temp->itemprice;
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
-								cout<<"    BACKORDERED"<<endl;
-								Invoicef<<"   BACKORDERED"<<endl;
+								cout<<"         BACKORDERED"<<endl;
+								Invoicef<<"        BACKORDERED"<<endl;
 							}					
-					
+						
 							}
 								
 						l--;	
-						}						
+						}
+							
+						
 					}//end Large
 }	
 //Math For Invoice
@@ -936,9 +946,10 @@ void search(warehouse num[3], string itemID)
 
 			}
 }
-void saveProgress(warehouse num[3])
+void saveProgress(warehouse num[3], int dayCount)
 {
 	ofstream save("Progress.sav"); //Creates the save file for what is stored in warehouse
+	save << "Days: " << dayCount;
 	for (int n = 0; n < 3; n++) //Writes what is in the warehouse.
 	{
 		save << "Warehouse " << n + 1 << endl;
@@ -955,8 +966,136 @@ void saveProgress(warehouse num[3])
 
 		}
 	}
-
 }
+	void loadProgress(warehouse num[3], int dayCount)
+	{
+		string line;
+		int size;
+		string token[10];
+		int n = 0;
+		int a = 1;
+		int k = 0;
+		int h = 0;
+		ifstream load("Progress.sav");
+		if (load.is_open())
+		{
+			while (!load.eof())
+			{
+				istringstream jkr;
+				getline(load, line);
+				jkr.str(line);
+
+				for (int d = 0; d < 6; d++)
+				{
+					jkr >> token[d];
+				}
+
+				if (n == 0)
+				{
+					size = atoi(token[1].c_str());
+					dayCount = size;
+					n++;
+				}
+				else if (n == 1)
+				{
+					n++;
+				}
+
+				else if (n >= 2)
+				{
+					if (k < 3)
+					{
+						if (n >= 2 && n <= 20)
+						{
+							if (token[3] != "Count:")
+							{
+								num[k].sloc[h].smalle[0] = token[3];
+								num[k].sloc[h].smalle[1] = token[5];
+							}
+							n++;
+							h++;
+						}
+						else if (n == 21)
+						{
+							if (token[3] != "Count:")
+							{
+								num[k].sloc[h].smalle[0] = token[3];
+								num[k].sloc[h].smalle[1] = token[5];
+							}
+							n++;
+							h = 0;
+						}
+						else if (n >= 22 && n <= 80)
+						{
+							if (token[3] != "Count:")
+							{
+								num[k].medloc[h].medium[0] = token[3];
+								num[k].medloc[h].medium[1] = token[5];
+							}
+							n++;
+							h++;
+						}
+						else if (n == 81)
+						{
+							if (token[3] != "Count:")
+							{
+								num[k].medloc[h].medium[0] = token[3];
+								num[k].medloc[h].medium[1] = token[5];
+							}
+							n++;
+							h = 0;
+						}
+						else if (n >= 82 && n <= 100)
+						{
+							if (token[3] != "Count:")
+							{
+								num[k].lloc[h].large[0] = token[3];
+								num[k].lloc[h].large[1] = token[5];
+							}
+							n++;
+							h++;
+						}
+						else if (n == 101)
+						{
+							if (token[3] != "Count:")
+							{
+								num[k].lloc[h].large[0] = token[3];
+								num[k].lloc[h].large[1] = token[5];
+							}
+							n = 1;
+							h = 0;
+							k++;
+						}
+					}
+				}
+
+			}
+			for (int n = 0; n < 3; n++) //Writes what is in the warehouse.
+			{
+				cout << "Warehouse " << n + 1 << endl;
+				for (int i = 0; i < 20; i++){
+					cout << "Small " << i << " ID: " << num[n].sloc[i].smalle[0] << " Count: " << num[n].sloc[i].smalle[1] << endl;
+
+				}
+				system("pause");
+				for (int i = 0; i < 60; i++){
+					cout << "Medium " << i << " ID: " << num[n].medloc[i].medium[0] << " Count: " << num[n].medloc[i].medium[1] << endl;
+
+				}
+				for (int i = 0; i < 20; i++){
+					cout << "Large " << i << " ID: " << num[n].lloc[i].large[0] << " Count: " << num[n].lloc[i].large[1] << endl;
+
+				}
+			}
+
+			cout << "Previous save is loaded." << endl;
+			load.close();
+		}
+		else
+		{
+			cout << "Save file is not found." << endl;
+		}
+	}
 int main()
 {
 	int holidayPick=0;
@@ -1008,6 +1147,7 @@ dayForDisaster += disasterRand;
 	int dayCount = 1;
 	setuplist(head);
 	cout<<"Catalogue Created"<<endl;
+	loadProgress(num, dayCount);
 		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
 		while(true)
 	{
@@ -1177,7 +1317,7 @@ dayForDisaster += disasterRand;
 	}
 	else if(userInput== '3')//Save and Quit
 	{
-		saveProgress(num);
+		saveProgress(num, dayCount);
 		cout << "Items and progress has been saved." << endl;
 		system("pause");
 		return 0;
