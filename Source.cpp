@@ -888,7 +888,6 @@ int main()
 	x++;
 	}
 dayForDisaster += disasterRand;
-dayForHoliday += holidayRand;
 		if(dayForDisaster < dayForHoliday && (dayForHoliday - dayForDisaster) == 1)//Makes sure holiday and disaster are not back to back
 	{
 		dayForHoliday++;
