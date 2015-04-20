@@ -1135,11 +1135,11 @@ dayForDisaster += disasterRand;
 		}
 		customer(num);
 	do {
-		cout<<endl<<"The day's files have been processed and output to the Invoice.txt file."<<endl<<endl<< "Please select and action below "<<endl;
+		cout<<endl<<"The day's files have been processed and output to the Invoice.txt file."<<endl<<"Day "<<dayCount<<" is done, pick an action."<<endl<<endl<< "Please select and action below "<<endl;
 		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4. Abort without saving "<<endl;
 	cin>>userInput;
-	dayCount++;	
-	cout<<"Day "<<dayCount<<endl;
+		
+
 	if(holidayHasHappened == true)
 	{
 	holidayRand = rand() % 13 + 1;//once every two weeks
@@ -1159,6 +1159,7 @@ dayForDisaster += disasterRand;
 	//Menu
 	if(userInput == '1')//Next Day
 	{
+		dayCount++;
 		//Group Functionality (Remove unordered of 5 days)
 
 		//if(holidayHasHappened == false && disasterHasHappened == false){
