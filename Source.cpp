@@ -1051,6 +1051,9 @@ void saveProgress(warehouse num[3])
 }
 int main()
 {
+	char isBackorder;
+	bool backOrderFunctionFinished;
+	string backOrderName;
 	int holidayPick=0;
 	int disasterPick = 0;
 	int holidayRand = 0;
@@ -1121,6 +1124,40 @@ dayForDisaster += disasterRand;
         cout << "Invalid file name. Please enter a valid Vendor file name: ";
     }
 		vendor(num);
+
+		/*
+		//THIS IS TESTING FOR BACKORDER IN MAIN//////////////////////////////
+		backOrderFunctionFinished = false; 
+		cout << "Is there a backorder you wish to fulfill?" << endl;
+		while (backOrderFunctionFinished == false) // Checks to see if the user has entered in y/n
+		{
+			cin >> isBackorder;
+			if(isBackorder == 'y')
+			{
+				cout << "Please enter the file name for the backOrder." << endl;
+				while(true)
+				{
+				getline(cin,custFile);
+				Customer.open(custFile.c_str());
+				if(Customer) break;
+				cout << "Invalid file name. Please enter a valid Customer file name: " << endl;
+				}
+				customer(num);
+				backOrderFunctionFinished = true;
+
+			}
+			else if(isBackorder == 'n')
+			{
+			backOrderFunctionFinished = true;
+			}
+			else
+			{
+			cout << "Incorrect Entry, Please Enter y/n" << endl;
+			}
+		}
+		// END OF TESTING BACKORDER IN MAIN/////////////////////////////////////
+		*/
+
 		cout<<"Enter name of Customer File For Day "<< dayCount<<". "<<endl;
 		while(true)
 		{
