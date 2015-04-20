@@ -141,6 +141,8 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 				int numberFromForm = (atoi(count.c_str()));
 				if (check(item, head, total) != true)
 				{
+				MessageBoxA (NULL, "See Command Prompt For ID of Item Not In Catalogue", "Item Did Not Exist!", MB_OK);
+				cout << "Item " << item << " is not in the catalogue, will not store item." << endl;
 				}
 				else
 				{
@@ -510,7 +512,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 									num[n].sloc[s].smalle[1] = "";
 								}
 								num[n].sloc[s].smalle[2] = "-1";
-								if(s!=0){
+								if(smalleGivenToCustomer > 0){
 								//Packing List storage
 								outputHolder[holderPosition].warehouseNumber = n+1;
 								outputHolder[holderPosition].id = temp->itemid;
@@ -653,7 +655,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 									num[n].medloc[m].medium[1] = "";
 								}
 									num[n].medloc[m].medium[2] = "-1";
-									if(m!=0){
+									if(mediumGivenToCustomer > 0){
 								//Packing List storage
 								outputHolder[holderPosition].warehouseNumber = n+1;
 								outputHolder[holderPosition].id = temp->itemid;
@@ -801,7 +803,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 									num[n].lloc[l].large[1] = "";
 								}
 								num[n].lloc[l].large[2] = "-1";
-							if(l!=0){
+							if(largeGivenToCustomer > 0){
 								//Packing List storage
 								outputHolder[holderPosition].warehouseNumber = n+1;
 								outputHolder[holderPosition].id = temp->itemid;
@@ -883,7 +885,6 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 						}						
 					}//end Large
 }	
-
 if(j == 1){
 	int total = 0;
 	//Math For Invoice
@@ -975,7 +976,8 @@ Invoicef<<outputHolder[d].id<<"   "<<outputHolder[d].name<<"   "<<outputHolder[d
 				if(outputHolder[d].warehouseNumber == 3)
 				{
 //cout<<outputHolder[d].id<<"\t\t\t"<<outputHolder[d].name<<"     "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;
-Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<"   "<<outputHolder[d].size<<"-"<<outputHolder[d].location+1<<"                            "<<outputHolder[d].quantity<<endl;																														
+			if(outputHolder[d].quantity > 0){		
+					Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<"   "<<outputHolder[d].size<<"-"<<outputHolder[d].location+1<<"                            "<<outputHolder[d].quantity<<endl;																														
 			if(outputHolder[d+1].id == outputHolder[d].id && outputHolder[d+1].warehouseNumber == outputHolder[d].warehouseNumber)
 				{
 					total+=outputHolder[d].quantity;
@@ -989,7 +991,9 @@ Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<"   "<<outputHolder[
 						total = 0;
 					}
 				}
-				}
+
+			}
+	}
 		  }
 }
 }//for loop end
