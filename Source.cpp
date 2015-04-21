@@ -1180,7 +1180,9 @@ dayForDisaster += disasterRand;
 				}			
 	}
 	cout<<"Catalogue Created"<<endl;
-	loadProgress(num, dayCount);
+	int date;
+	date = loadProgress(num, dayCount);
+	dayCount = date;
 	cout<<"Day "<< dayCount << endl;
 		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
 		while(true)
