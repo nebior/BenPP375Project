@@ -45,7 +45,7 @@ struct list //Information about each item.
 	list *next; //Will be a linked list.
 };
 list *head;  //Catalogue of items
-void placeBackOrder(string fileid, string shipdate, string business, string type, string last, string first, string straddr, string comma, string city, string state, string post, string country, string orderdate, string ordercount, string custid, string orderid, string payment, string discount, string item, string number, string count)
+void placeBackOrder(string fileid, string shipdate, string type, string last, string first, string straddr, string comma, string city, string state, string post, string country, string orderdate, string ordercount, string custid, string orderid, string payment, string discount, string item, string number, string count)
 {
 	ofstream BackorderFile;
 	string filename = "BackOrder";
@@ -57,14 +57,7 @@ void placeBackOrder(string fileid, string shipdate, string business, string type
 	BackorderFile.open(filename);
 	BackorderFile << "H" << fileid << "-" << shipdate << endl;
 	BackorderFile << type;
-	if (type == "B")
-	{
-		BackorderFile << business;
-	}
-	else
-	{
-		BackorderFile << last << first;
-	}
+	BackorderFile << last << first;
 	BackorderFile << straddr << comma << city << state << post << country << orderdate << "1" << endl;
 	BackorderFile << custid << orderid << payment << discount << endl;
 	BackorderFile << item << "-" << number << "-" << count << endl;
@@ -91,7 +84,7 @@ bool check(string item, list *p, int num)
 void setuplist(list *p)  //Intakes the catalogue and stores it locally in the program.
 {
 	string temp;
-	//getline(File,temp); //For the first line, 'List last created on: '
+	getline(File,temp); //For the first line, 'List last created on: '
 	while (!File.eof())
 	{
 		getline(File, temp);
@@ -385,16 +378,11 @@ void customer(warehouse num[3])
 		{
 			//All of Customer's Info
 			type = input.substr(0, 1);
-			if (type == "P")
-			{
-				last = input.substr(1, 30); first = input.substr(31, 30);
-			}
-			else
-			{
-				string business = input.substr(1, 60);
-			}
-			;straddr = input.substr(61, 30);comma = input.substr(91, 1);city = input.substr(92, 20);
-			state = input.substr(112, 20);post = input.substr(132, 10);country = input.substr(142, 40);orderdate = input.substr(182, 8);ordercount = input.substr(190, 1);			
+			last = input.substr(1, 30); first = input.substr(31, 30);
+			straddr = input.substr(61, 30);comma = input.substr(91, 1);city = input.substr(92, 20);
+			state = input.substr(112, 20);post = input.substr(132, 10);country = input.substr(142, 40);
+			orderdate = input.substr(182, 8);
+			ordercount = input.substr(190, 1);			
 	getline(Customer, input);
 			custid = input.substr(0, 10);
 			orderid = input.substr(10, 10);
@@ -406,14 +394,7 @@ void customer(warehouse num[3])
 		//Invoice 
 			ofstream Invoicef;
 			Invoicef.open("Invoice.txt",::ofstream::app);
-			if (type == "B")
-			{
-				Invoicef << endl << business << endl;
-			}
-			else
-			{
-				Invoicef << endl << first << " " << last << endl;
-			}
+			Invoicef << endl << first << " " << last << endl;
 			Invoicef<<straddr<<endl;
 			Invoicef<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){Invoicef<<country;}
 			Invoicef<<endl;
@@ -584,7 +565,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
 								}
-								placeBackOrder(fileid, shipdate, type, last,business, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
 								Invoicef<<"   BACKORDERED"<<endl;
@@ -719,7 +700,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
 								}		
-								placeBackOrder(fileid, shipdate, type, last, first,business, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
 								Invoicef<<"   BACKORDERED"<<endl;
@@ -829,7 +810,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								warehousesChecked[1]= false;
 								warehousesChecked[2]= false;
 								doneFillingOrder = true;
-								placeBackOrder(fileid, shipdate, type, last, first, business, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, count);	
 								if(largeQuantityForInvoice > 0){
 								Invoicef<<largeQuantityForInvoice;
 								Invoicef<<"          $ "<<temp->itemprice;
@@ -850,7 +831,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 								Invoicef<<temp->itemid<<"  ";
 								Invoicef<<temp->itemname;
 								}	
-								placeBackOrder(fileid, shipdate, type, last, first, business, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
+								placeBackOrder(fileid, shipdate, type, last, first, straddr, comma,city, state, post, country, orderdate, ordercount, custid, orderid, payment, discount, item, number, to_string(static_cast<long long>(numberStillNeeded)));	
 								Invoicef<<numberStillNeeded;
 								Invoicef<<"          $ "<<temp->itemprice;
 								Invoicef<<"   BACKORDERED"<<endl;
@@ -873,14 +854,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 			Invoicef << "Tax      6%" << "\t\t\t\t\t\t\t\t" << (discountedPrice * .06) << endl;
 			Invoicef << "Amount Due in " << payment << "\t\t\t\t\t\t" << discountedPrice + ((overallSubtotal * ((stod(discount.c_str())) / 100)) * .06) << endl;
 			Invoicef << "Customer ID: " << custid << endl;
-			if (type == "P")
-			{
 			Invoicef << endl << first << " " << last << endl;
-			}
-			else
-			{
-				Invoicef << endl << business << endl;
-			}
 			Invoicef<<straddr<<endl;
 			Invoicef<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){Invoicef<<country;}
 			Invoicef<<endl;	
