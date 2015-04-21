@@ -171,7 +171,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 						while(s<20 && doneStoring == false)//Look at all 20 smalle spots in the warehouse
 						{
 							bool itemAlreadyInWarehouse = false;//reset to false
-							if (num[n].sloc[s].smalle[0] == item && num[n].sloc[s].smalle[1]!="250")//If item is in warehouse and the slot isnt full
+							if (num[n].sloc[s].smalle[0] == item)//If item is in warehouse and the slot isnt full
 							{
 								itemAlreadyInWarehouse = true;//Item is in warehouse
 							}
@@ -235,7 +235,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 						while(m<60 && doneStoring == false)//Look at all 60 medium spots in the warehouse
 						{
 							bool itemAlreadyInWarehouse = false;//reset to false
-							if (num[n].medloc[m].medium[0] == item && num[n].medloc[m].medium[1]!="100")//If item is in warehouse and the slot isnt full
+							if (num[n].medloc[m].medium[0] == item)//If item is in warehouse and the slot isnt full
 							{
 								itemAlreadyInWarehouse = true;//Item is in warehouse
 							}
@@ -297,7 +297,7 @@ void vendor(warehouse num[3])  //For when the Vendor file is ingested.
 						while(l<20 && doneStoring == false)//Look at all 20 large spots in the warehouse
 						{
 							bool itemAlreadyInWarehouse = false;//reset to false
-							if (num[n].lloc[l].large[0] == item && num[n].lloc[l].large[1]!="10")//If item is in warehouse and the slot isnt full
+							if (num[n].lloc[l].large[0] == item)//If item is in warehouse and the slot isnt full
 							{
 								itemAlreadyInWarehouse = true;//Item is in warehouse
 							}
