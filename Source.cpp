@@ -372,9 +372,6 @@ void customer(warehouse num[3])
 	bool doneFillingOrder = false;
 	int custCount = 0;	
 	bool warehousesChecked[3];
-	warehousesChecked[0]= false;
-	warehousesChecked[1]= false;
-	warehousesChecked[2]= false;
 	getline(Customer, input);
 	fileid = input.substr(1, 4);
 	shipdate = input.substr(6, 8); 
@@ -438,6 +435,9 @@ void customer(warehouse num[3])
 		    Invoicef<<"Item ID      Item Name                 Quantity     Price          Item total"<<endl;		
 		for (int j = i; j>0; j--)
 			{
+					warehousesChecked[0]= false;
+					warehousesChecked[1]= false;
+					warehousesChecked[2]= false;
 				doneFillingOrder = false;
 				getline(Customer, input);
 				item = input.substr(0, 10); number = input.substr(11, 1);
@@ -1184,8 +1184,6 @@ dayForDisaster += disasterRand;
 	{
 		dayCount++;
 		//Group Functionality (Remove unordered of 5 days)
-
-		//if(holidayHasHappened == false && disasterHasHappened == false){
 		for(int n = 0; n<3; n++){
 				for(int i = 0; i<20; i++){
 					if(num[n].sloc[i].smalle[0] != ""){
@@ -1267,7 +1265,7 @@ dayForDisaster += disasterRand;
 		vendor(num);
 				
 		backOrderFunctionFinished = false; 
-		cout << "Is there a backorder you wish to fulfill?" << endl;
+		cout << "Is there a backorder you wish to fulfill? Enter y/n" << endl;
 		while (backOrderFunctionFinished == false) // Checks to see if the user has entered in y/n
 		{
 			cin >> isBackorder;
@@ -1302,7 +1300,7 @@ dayForDisaster += disasterRand;
 		vendor(num);
 				
 		backOrderFunctionFinished = false; 
-		cout << "Is there a backorder you wish to fulfill?" << endl;
+		cout << "Is there a backorder you wish to fulfill? Enter y/n" << endl;
 		while (backOrderFunctionFinished == false) // Checks to see if the user has entered in y/n
 		{
 			cin >> isBackorder;
@@ -1426,7 +1424,7 @@ dayForDisaster += disasterRand;
 		{
 		vendor(num);				
 		backOrderFunctionFinished = false; 
-		cout << "Is there a backorder you wish to fulfill?" << endl;
+		cout << "Is there a backorder you wish to fulfill? Enter y/n" << endl;
 		while (backOrderFunctionFinished == false) // Checks to see if the user has entered in y/n
 		{
 			cin >> isBackorder;
