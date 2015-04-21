@@ -1117,6 +1117,8 @@ int loadProgress(warehouse num[3], int dayCount)
 
 int main()
 {
+	ofstream w;
+	w.open("warehouseContents.txt");
 	char isBackorder;
 	bool backOrderFunctionFinished;
 	string backOrderName;
@@ -1200,7 +1202,7 @@ dayForDisaster += disasterRand;
 		customer(num);
 	do {
 		cout<<endl<<"The day's files have been processed and output to the Invoice.txt file."<<endl<<"Day "<<dayCount<<" is done, pick an action."<<endl<<endl<< "Please select and action below "<<endl;
-		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4. Abort without saving "<<endl;
+		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4.View Warehouse Contents"<<endl<<"5. Abort without saving "<<endl;
 	cin>>userInput;
 		
 
@@ -1452,7 +1454,27 @@ dayForDisaster += disasterRand;
 		system("pause");
 		return 0;
 	}
-	else if(userInput== '4')//Abort
+		else if(userInput== '4')
+	{
+				for(int n = 0; n<3; n++){//Outputs the contents of all 3 warehouses, screen too smalle to get first 3 smalle slots.
+		w<<"Warehouse "<<n+1<<endl;
+				for(int i = 0; i<20; i++){
+					w<<"small "<<i<<" ID: "<<num[n].sloc[i].smalle[0]<<" Count: "<<num[n].sloc[i].smalle[1]<<endl;
+				}
+				for(int i = 0; i<60; i++){
+					w<<"Medium "<<i<<" ID: "<<num[n].medloc[i].medium[0]<<" Count: "<<num[n].medloc[i].medium[1]<<endl;
+				}
+				for(int i = 0; i<20; i++){
+					w<<"Large "<<i<<" ID: "<<num[n].lloc[i].large[0]<<" Count: "<<num[n].lloc[i].large[1]<<endl;
+				}
+				if(n == 2){
+					cout<<"This pause is so you can view the warehouseContents.txt file"<<endl;
+					system("pause");
+					remove("warehouseContents.txt");
+				}
+				}
+	}
+	else if(userInput== '5')//Abort
 	{
 		abort();
 	}
