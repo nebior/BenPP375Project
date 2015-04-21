@@ -3,13 +3,12 @@
 //
 //  Created by Programing Programing Prodigies on 4/8/15.
 //  Copyright (c) 2015 Programing Prodigies. All rights reserved.
-//  Latest Change 4/19/15 3:13pm 4/20/2015
+//  Latest Change 4/19/15 9:35pm 4/20/2015
 //
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <Windows.h>
-#include <sstream>
 using namespace std;
 ifstream File, Vendor, Customer; //Three file initializations.
 string itemtotal; //Total number of items in Catalogue string form.
@@ -911,6 +910,7 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 					}//end Large
 }	
 		if (j == 1){
+			int overallTotal = 0;
 			int total = 0;
 			//Math For Invoice
 			//cout<<endl<<"Subtotal "<<"\t\t\t\t\t\t\t\t"<<overallSubtotal<<endl;	
@@ -920,26 +920,10 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 			Invoicef << "Discount Percentage --" << discount << "\t\t\t\t\t\t" << overallSubtotal * ((stod(discount.c_str())) / 100) << endl;
 			//cout<<"Discount Percentage --"<<discount<<"\t\t\t\t\t\t"<<overallSubtotal * ((stod(discount.c_str()))/100)<<endl;	
 			double discountedPrice = (overallSubtotal - overallSubtotal * ((stod(discount.c_str())) / 100));
-			/*cout<<"Order Total "<<"\t\t\t\t\t\t\t\t"<<discountedPrice<<endl;
-			cout<<"         "<<"\t\t\t\t\t\t\t"<<"=============="<<endl;
-			cout<<"Tax      6%"<<"\t\t\t\t\t\t\t\t"<<(discountedPrice * .06)<<endl;
-			cout<<"Amount Due in "<<payment<<"\t\t\t\t\t\t"<<discountedPrice   +((overallSubtotal * ((stod(discount.c_str()))/100)) * .06)<<endl;*/
 			Invoicef << "Order Total " << "\t\t\t\t\t\t\t\t" << discountedPrice << endl;
 			Invoicef << "         " << "\t\t\t\t\t\t\t" << "==============" << endl;
 			Invoicef << "Tax      6%" << "\t\t\t\t\t\t\t\t" << (discountedPrice * .06) << endl;
 			Invoicef << "Amount Due in " << payment << "\t\t\t\t\t\t" << discountedPrice + ((overallSubtotal * ((stod(discount.c_str())) / 100)) * .06) << endl;
-			//Picking/Packing slip Header
-			//cout
-			/*cout<<"Customer ID: " <<custid<<endl;
-			cout<<endl<<first<<" "<<last<<endl;
-			cout<<straddr<<endl;
-			cout<<city<<" "<<state<<" "<<post; if(country != "USA                                     " || "United States of America                          "){cout<<country;}
-			cout<<endl;
-			cout<<"Order ID: " <<orderid<<endl;
-			cout<<"Order Date: "<< orderdate.substr(4, 2)  << "-" << orderdate.substr(6, 2) << "-" << orderdate.substr(0, 4) << endl;
-			cout<<"Shipping Date: "<<shipdate.substr(4, 2)  << "-" <<shipdate.substr(6, 2) << "-" <<shipdate.substr(0, 4) << endl;
-			*/
-			//file
 			Invoicef << "Customer ID: " << custid << endl;
 			if (type == "P")
 			{
@@ -961,9 +945,9 @@ num[n].sloc[s].smalle[1]=to_string(static_cast<long long>(numberAlreadyInWarehou
 			for(int d = 0; d<1000; d++){
 				if(outputHolder[d].warehouseNumber == 1)
 				{
-//cout<<outputHolder[d].id<<"\t\t\t"<<outputHolder[d].name<<"     "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;
 Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<"   "<<outputHolder[d].size<<"-"<<outputHolder[d].location+1<<"                            "<<outputHolder[d].quantity<<endl;																														
-			if(outputHolder[d+1].id == outputHolder[d].id && outputHolder[d+1].warehouseNumber == outputHolder[d].warehouseNumber)
+			overallTotal+=outputHolder[d].quantity;
+if(outputHolder[d+1].id == outputHolder[d].id && outputHolder[d+1].warehouseNumber == outputHolder[d].warehouseNumber)
 				{
 					total+=outputHolder[d].quantity;
 				}
@@ -972,20 +956,43 @@ Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<"   "<<outputHolder[
 					if(total != 0)
 					{
 						total+=outputHolder[d].quantity;
-						Invoicef<<"                                               Total:                        "<<total<<endl;
+						Invoicef<<"                                               Total:                         "<<total<<endl;
 						total = 0;
 					}
 				}
 				}
 			}
 //Warehouse 2 slip
-			//cout<<"Item ID Item Name          Warehouse 2 \t\t\t Location     Quantity"<<endl;
 		    Invoicef<<"Item ID     Item Name             Warehouse 2 Location(1-20 or 1-60)     Quantity"<<endl;
 			for(int d = 0; d<1000; d++){
 				if(outputHolder[d].warehouseNumber == 2)
 				{
-//cout<<outputHolder[d].id<<"\t\t\t"<<outputHolder[d].name<<"     "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;
-Invoicef<<outputHolder[d].id<<"   "<<outputHolder[d].name<<"   "<<outputHolder[d].size<<"-"<<outputHolder[d].location+1<<"                            "<<outputHolder[d].quantity<<endl;
+Invoicef<<outputHolder[d].id<<"   "<<outputHolder[d].name<<"    "<<outputHolder[d].size<<"-"<<outputHolder[d].location+1<<"                            "<<outputHolder[d].quantity<<endl;
+				overallTotal+=outputHolder[d].quantity;
+if(outputHolder[d+1].id == outputHolder[d].id && outputHolder[d+1].warehouseNumber == outputHolder[d].warehouseNumber)
+				{
+					total+=outputHolder[d].quantity;
+				}
+				else
+				{
+					if(total != 0)
+					{
+						total+=outputHolder[d].quantity;
+						Invoicef<<"                                              Total:                         "<<total<<endl;
+						total = 0;
+					}
+				}
+			}
+			}
+//Warehouse 3 slip
+			//cout<<"Item ID Item Name          Warehouse 3 \t\t\t\t\t Location     Quantity"<<endl;
+		    Invoicef<<"Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity"<<endl;	
+			for(int d = 0; d<1000; d++){			
+				if(outputHolder[d].warehouseNumber == 3)
+				{
+			if(outputHolder[d].quantity > 0){							
+				Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<"   "<<outputHolder[d].size<<"-"<<outputHolder[d].location+1<<"                            "<<outputHolder[d].quantity<<endl;																														
+			overallTotal+=outputHolder[d].quantity;
 				if(outputHolder[d+1].id == outputHolder[d].id && outputHolder[d+1].warehouseNumber == outputHolder[d].warehouseNumber)
 				{
 					total+=outputHolder[d].quantity;
@@ -995,31 +1002,7 @@ Invoicef<<outputHolder[d].id<<"   "<<outputHolder[d].name<<"   "<<outputHolder[d
 					if(total != 0)
 					{
 						total+=outputHolder[d].quantity;
-						Invoicef<<"                                              Total:                        "<<total<<endl;
-						total = 0;
-					}
-				}
-			}
-			}
-//Warehouse 3 slip
-			//cout<<"Item ID Item Name          Warehouse 3 \t\t\t\t\t Location     Quantity"<<endl;
-		    Invoicef<<"Item ID     Item Name             Warehouse 3 Location(1-20 or 1-60)     Quantity"<<endl;	
-			for(int d = 0; d<1000; d++){
-				if(outputHolder[d].warehouseNumber == 3)
-				{
-//cout<<outputHolder[d].id<<"\t\t\t"<<outputHolder[d].name<<"     "<<outputHolder[d].size<<"-"<<outputHolder[d].location<<"                  "<<outputHolder[d].quantity<<endl;
-			if(outputHolder[d].quantity > 0){		
-					Invoicef<<outputHolder[d].id<<"    "<<outputHolder[d].name<<"   "<<outputHolder[d].size<<"-"<<outputHolder[d].location+1<<"                            "<<outputHolder[d].quantity<<endl;																														
-			if(outputHolder[d+1].id == outputHolder[d].id && outputHolder[d+1].warehouseNumber == outputHolder[d].warehouseNumber)
-				{
-					total+=outputHolder[d].quantity;
-				}
-				else
-				{
-					if(total != 0)
-					{
-						total+=outputHolder[d].quantity;
-						Invoicef<<"                                              Total:                        "<<total<<endl;
+						Invoicef<<"                                              Total:                         "<<total<<endl;
 						total = 0;
 					}
 				}
@@ -1027,6 +1010,7 @@ Invoicef<<outputHolder[d].id<<"   "<<outputHolder[d].name<<"   "<<outputHolder[d
 			}
 	}
 		  }
+	Invoicef<<"                                       Overall Total:                        "<<overallTotal<<endl;
 }
 }//for loop end
 	for(int d = 0; d<1000; d++)
@@ -1074,15 +1058,14 @@ void search(warehouse num[3], string itemID)
 				}
 			}
 }
-void saveProgress(warehouse num[3], int dayCount)
+void saveProgress(warehouse num[3])
 {
 	ofstream save("Progress.sav"); //Creates the save file for what is stored in warehouse
-	save << "Days: " << dayCount << endl;
 	for (int n = 0; n < 3; n++) //Writes what is in the warehouse.
 	{
 		save << "Warehouse " << n + 1 << endl;
 		for (int i = 0; i < 20; i++){
-			save << "small " << i << " ID: " << num[n].sloc[i].smalle[0] << " Count: " << num[n].sloc[i].smalle[1] << endl;
+			save << "smalle " << i << " ID: " << num[n].sloc[i].smalle[0] << " Count: " << num[n].sloc[i].smalle[1] << endl;
 		}
 		for (int i = 0; i < 60; i++){
 			save << "Medium " << i << " ID: " << num[n].medloc[i].medium[0] << " Count: " << num[n].medloc[i].medium[1] << endl;
@@ -1092,142 +1075,6 @@ void saveProgress(warehouse num[3], int dayCount)
 		}
 	}
 }
-int loadProgress(warehouse num[3], int dayCount)
-{
-	string line;
-	int size;
-	string token[10];
-	int n = 0;
-	int a = 1;
-	int k = 0;
-	int h = 0;
-	ifstream load("Progress.sav"); //Finds the save file to continue storing items
-	if (load.is_open())//If a file exists
-	{
-		while (!load.eof())//Reads the entire save file from start to finish
-		{
-			istringstream jkr;
-			getline(load, line);//Store each line into a string
-			jkr.str(line);
-
-			for (int d = 0; d < 6; d++) //Breaks the line into parts to be read
-			{
-				jkr >> token[d];
-			}
-
-			if (n == 0) //Initialize the day the work is being done
-			{
-				size = atoi(token[1].c_str());
-				while (dayCount < size)
-				{
-					dayCount++;
-				}
-				//cout << size << endl;
-				n++;
-			}
-			else if (n == 1) //Ignore this line
-			{
-				n++;
-			}
-
-			else if (n >= 2) //Stores the items line by line
-			{
-				if (k < 3) //Warehouse number
-				{
-					if (n >= 2 && n <= 20) //Stores the small items
-					{
-						if (token[3] != "Count:")
-						{
-							num[k].sloc[h].smalle[0] = token[3];
-							num[k].sloc[h].smalle[1] = token[5];
-						}
-						n++;
-						h++;
-					}
-					else if (n == 21) //Switch to storing the medium items
-					{
-						if (token[3] != "Count:")
-						{
-							num[k].sloc[h].smalle[0] = token[3];
-							num[k].sloc[h].smalle[1] = token[5];
-						}
-						n++;
-						h = 0;
-					}
-					else if (n >= 22 && n <= 80) //Stores the medium items
-					{
-						if (token[3] != "Count:")
-						{
-							num[k].medloc[h].medium[0] = token[3];
-							num[k].medloc[h].medium[1] = token[5];
-						}
-						n++;
-						h++;
-					}
-					else if (n == 81) //Switch to storing large items
-					{
-						if (token[3] != "Count:")
-						{
-							num[k].medloc[h].medium[0] = token[3];
-							num[k].medloc[h].medium[1] = token[5];
-						}
-						n++;
-						h = 0;
-					}
-					else if (n >= 82 && n <= 100) //Stores the large items
-					{
-						if (token[3] != "Count:")
-						{
-							num[k].lloc[h].large[0] = token[3];
-							num[k].lloc[h].large[1] = token[5];
-						}
-						n++;
-						h++;
-					}
-					else if (n == 101) //Switch to storing the small items in next warehouse
-					{
-						if (token[3] != "Count:")
-						{
-							num[k].lloc[h].large[0] = token[3];
-							num[k].lloc[h].large[1] = token[5];
-						}
-						n = 1;
-						h = 0;
-						k++;
-					}
-				}
-			}
-
-		}
-		//for (int n = 0; n < 3; n++) //Test to see if the save is being read.
-		//{
-		//	cout << "Day: " << dayCount << endl;
-		//	cout << "Warehouse " << n + 1 << endl;
-		//	for (int i = 0; i < 20; i++){
-		//		cout << "Small " << i << " ID: " << num[n].sloc[i].smalle[0] << " Count: " << num[n].sloc[i].smalle[1] << endl;
-
-		//	}
-		//	system("pause");
-		//	for (int i = 0; i < 60; i++){
-		//		cout << "Medium " << i << " ID: " << num[n].medloc[i].medium[0] << " Count: " << num[n].medloc[i].medium[1] << endl;
-
-		//	}
-		//	for (int i = 0; i < 20; i++){
-		//		cout << "Large " << i << " ID: " << num[n].lloc[i].large[0] << " Count: " << num[n].lloc[i].large[1] << endl;
-
-		//	}
-		//}
-		
-		cout << "Previous save is loaded." << endl;
-		load.close(); //Close the file
-	}
-	else //If save does not exist
-	{
-		cout << "Save file is not found." << endl;
-	}
-	return dayCount;
-}
-
 int main()
 {
 	char isBackorder;
@@ -1290,11 +1137,8 @@ dayForDisaster += disasterRand;
 					num[n].lloc[i].large[2] = "0";	
 				}			
 	}
-	int date;
-	date = loadProgress(num, dayCount);
-	dayCount = date;
 	cout<<"Catalogue Created"<<endl;
-	cout<<"Day "<< dayCount << endl;
+	cout<<"Day 1"<<endl;
 		cout<<"Enter name of Vendor File For Day "<< dayCount<<". "<<endl;
 		while(true)
 	{
@@ -1618,7 +1462,7 @@ dayForDisaster += disasterRand;
 	}
 	else if(userInput== '3')//Save and Quit
 	{
-		saveProgress(num, dayCount);
+		saveProgress(num);
 		cout << "Items and progress has been saved." << endl;
 		system("pause");
 		return 0;
