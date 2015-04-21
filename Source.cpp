@@ -1217,7 +1217,7 @@ int loadProgress(warehouse num[3], int dayCount)
 
 		//	}
 		//}
-		return dayCount;
+		
 		cout << "Previous save is loaded." << endl;
 		load.close(); //Close the file
 	}
@@ -1225,6 +1225,7 @@ int loadProgress(warehouse num[3], int dayCount)
 	{
 		cout << "Save file is not found." << endl;
 	}
+	return dayCount;
 }
 
 int main()
