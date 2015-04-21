@@ -1202,7 +1202,7 @@ dayForDisaster += disasterRand;
 		customer(num);
 	do {
 		cout<<endl<<"The day's files have been processed and output to the Invoice.txt file."<<endl<<"Day "<<dayCount<<" is done, pick an action."<<endl<<endl<< "Please select and action below "<<endl;
-		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4.View Warehouse Contents"<<endl<<"5. Abort without saving "<<endl;
+		cout<<"1. Next Day."<<endl<<"2. Lookup Item Info."<<endl<<"3. Save and Quit. "<<endl<<"4. View Warehouse Contents"<<endl<<"5. Abort without saving "<<endl;
 	cin>>userInput;
 		
 
@@ -1456,7 +1456,7 @@ dayForDisaster += disasterRand;
 	}
 		else if(userInput== '4')
 	{
-				for(int n = 0; n<3; n++){//Outputs the contents of all 3 warehouses, screen too smalle to get first 3 smalle slots.
+				for(int n = 0; n<3; n++){//Outputs the contents of all 3 warehouses
 		w<<"Warehouse "<<n+1<<endl;
 				for(int i = 0; i<20; i++){
 					w<<"small "<<i<<" ID: "<<num[n].sloc[i].smalle[0]<<" Count: "<<num[n].sloc[i].smalle[1]<<endl;
@@ -1483,7 +1483,7 @@ dayForDisaster += disasterRand;
 	cout<<"Not a valid entry. Retype choice.";
 	dayCount--;
 	}
-	} while(userInput != '4');
+	} while(userInput != '5');
 	system("pause");
 	return 0;
 }
