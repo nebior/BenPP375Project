@@ -1,6 +1,5 @@
 //
 //  main.cpp
-//  375 - Big project
 //
 //  Created by Programing Programing Prodigies on 4/8/15.
 //  Copyright (c) 2015 Programing Prodigies. All rights reserved.
