@@ -1272,7 +1272,7 @@ dayForDisaster += disasterRand;
 			if(isBackorder == 'y')
 			{
 				cin.ignore();
-				cout << "Please enter the file name for the backOrder." << endl;
+				cout << "Please enter the file name for the Backorder." << endl;
 				while(true)
 				{
 				Customer.close();
@@ -1307,7 +1307,7 @@ dayForDisaster += disasterRand;
 			if(isBackorder == 'y')
 			{
 				cin.ignore();
-				cout << "Please enter the file name for the backOrder." << endl;
+				cout << "Please enter the file name for the Backorder." << endl;
 				while(true)
 				{
 				Customer.close();
@@ -1431,7 +1431,7 @@ dayForDisaster += disasterRand;
 			if(isBackorder == 'y')
 			{
 				cin.ignore();
-				cout << "Please enter the file name for the backOrder." << endl;
+				cout << "Please enter the file name for the Backorder." << endl;
 				while(true)
 				{
 				Customer.close();
